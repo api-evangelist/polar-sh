@@ -1,0 +1,232 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Polar
+providerId: polar-sh
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Billing
+- Payments
+- Merchant of Record
+- Monetization
+- Subscriptions
+- Usage Based Billing
+- Plans
+description: >-
+  Polar is a Merchant of Record. The Polar API itself is free to use; revenue is
+  earned through per-transaction Merchant of Record fees taken from each sale.
+  Polar offers tiered monthly plans that trade a fixed monthly fee for a lower
+  variable per-transaction rate. Surcharges apply for international cards and
+  disputes, and Stripe-based payout fees apply on withdrawal. Organizations
+  created before 2026-05-27 are grandfathered onto an "Early Member" rate.
+notes: >-
+  Fees verified against the Polar pricing and Merchant of Record fees pages on
+  2026-06-21. Percentages and fixed amounts change; verify on the pricing page
+  at reconciliation. Amounts are in USD.
+sources:
+- https://polar.sh/resources/pricing
+- https://polar.sh/docs/merchant-of-record/fees
+- https://polar.sh/blog/introducing-polar-plans
+plans:
+- id: polar-starter
+  name: Starter
+  type: usage
+  description: >-
+    Free monthly plan with the standard Merchant of Record fee taken per
+    transaction. No monthly minimum; full API access.
+  entries:
+  - label: Monthly Platform Fee
+    name: starter_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0 / month
+    userMultiplied: false
+  - label: Merchant of Record Transaction Fee
+    name: starter_transaction
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 5% + $0.50 per transaction
+    userMultiplied: false
+  elements:
+  - name: Products & Prices
+  - name: Checkouts
+  - name: Customers
+  - name: Subscriptions
+  - name: Orders
+  - name: Benefits & License Keys
+  - name: Meters & Events
+  - name: Webhooks
+- id: polar-pro
+  name: Pro
+  type: subscription
+  description: >-
+    $20/month plan with a reduced per-transaction Merchant of Record rate.
+    Cost-effective above roughly $1,379/month in sales.
+  entries:
+  - label: Monthly Platform Fee
+    name: pro_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $20 / month
+    userMultiplied: false
+  - label: Merchant of Record Transaction Fee
+    name: pro_transaction
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 3.8% + $0.40 per transaction
+    userMultiplied: false
+  elements:
+  - name: Everything in Starter
+  - name: Lower Transaction Rate
+- id: polar-growth
+  name: Growth
+  type: subscription
+  description: >-
+    $100/month plan with a further reduced per-transaction rate.
+    Cost-effective above roughly $5,634/month in sales.
+  entries:
+  - label: Monthly Platform Fee
+    name: growth_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $100 / month
+    userMultiplied: false
+  - label: Merchant of Record Transaction Fee
+    name: growth_transaction
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 3.6% + $0.35 per transaction
+    userMultiplied: false
+  elements:
+  - name: Everything in Pro
+  - name: Lower Transaction Rate
+- id: polar-scale
+  name: Scale
+  type: subscription
+  description: >-
+    $400/month plan with the lowest published per-transaction rate.
+    Cost-effective above roughly $19,048/month in sales.
+  entries:
+  - label: Monthly Platform Fee
+    name: scale_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $400 / month
+    userMultiplied: false
+  - label: Merchant of Record Transaction Fee
+    name: scale_transaction
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 3.4% + $0.30 per transaction
+    userMultiplied: false
+  elements:
+  - name: Everything in Growth
+  - name: Lowest Transaction Rate
+- id: polar-early-member
+  name: Early Member (Grandfathered)
+  type: usage
+  description: >-
+    Legacy rate honored indefinitely for organizations created before
+    2026-05-27. Free monthly fee with a 4% + $0.40 transaction rate, plus an
+    additional 0.5% on subscription payments.
+  entries:
+  - label: Monthly Platform Fee
+    name: early_member_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0 / month
+    userMultiplied: false
+  - label: Merchant of Record Transaction Fee
+    name: early_member_transaction
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 4% + $0.40 per transaction (plus 0.5% on subscriptions)
+    userMultiplied: false
+  elements:
+  - name: Grandfathered Rate
+- id: polar-surcharges
+  name: Surcharges & Payout Fees
+  type: usage
+  description: >-
+    Additional fees that apply across all plans on top of the base Merchant of
+    Record transaction fee.
+  entries:
+  - label: International Card Surcharge
+    name: intl_card_surcharge
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: +1.5% of transaction value
+    userMultiplied: false
+  - label: Dispute / Chargeback Fee
+    name: dispute_fee
+    type: usage
+    metric: disputes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $15 per dispute (regardless of outcome)
+    userMultiplied: false
+  - label: Payout Fee (Stripe)
+    name: payout_fee
+    type: usage
+    metric: payouts
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0.25% + $0.25 per payout, plus $2 per active payout month and cross-border conversion fees
+    userMultiplied: false
+  elements:
+  - name: International Cards
+  - name: Disputes
+  - name: Payouts
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

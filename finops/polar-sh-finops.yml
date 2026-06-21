@@ -1,0 +1,113 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Polar
+providerId: polar-sh
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Billing
+- Payments
+- Merchant of Record
+- Monetization
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Polar as a Merchant of Record. Because Polar sells on the
+  developer's behalf, "spend" is the set of fees Polar deducts from gross
+  sales - a base Merchant of Record transaction fee (percentage + fixed),
+  international card surcharges, dispute fees, and Stripe-based payout fees -
+  netted against revenue before payout. Tiered monthly plans trade a fixed
+  monthly fee for a lower variable rate.
+notes: >-
+  Fee schedule verified against Polar pricing and Merchant of Record fees pages
+  on 2026-06-21; rates change. Verify against the pricing page at reconciliation.
+sources:
+- https://polar.sh/resources/pricing
+- https://polar.sh/docs/merchant-of-record/fees
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Polar
+serviceCategory: Billing and Payments
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Per Transaction
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Polar Merchant of Record
+  ServiceCategory: Billing and Payments
+  ProviderName: Polar
+  PublisherName: Polar
+  InvoiceIssuerName: Polar
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: transaction_fee_percent
+  description: Percentage component of the Merchant of Record fee on each transaction (4-5% depending on plan).
+  unit: percent
+  aggregation: sum
+  dimensions:
+  - organization
+  - plan
+- name: transaction_fee_fixed
+  description: Fixed per-transaction component of the Merchant of Record fee ($0.30-$0.50 depending on plan).
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - organization
+  - plan
+- name: subscription_surcharge
+  description: Additional 0.5% on subscription payments for Early Member (grandfathered) organizations.
+  unit: percent
+  aggregation: sum
+  dimensions:
+  - organization
+- name: international_card_surcharge
+  description: Additional 1.5% applied to transactions paid with an international card.
+  unit: percent
+  aggregation: sum
+  dimensions:
+  - organization
+- name: dispute_fee
+  description: Flat $15 charged per dispute/chargeback regardless of outcome.
+  unit: disputes
+  aggregation: sum
+  dimensions:
+  - organization
+- name: payout_fee
+  description: Stripe payout fees - 0.25% + $0.25 per payout, $2 per active payout month, plus cross-border conversion fees.
+  unit: payouts
+  aggregation: sum
+  dimensions:
+  - organization
+- name: monthly_platform_fee
+  description: Fixed monthly plan fee ($0 Starter, $20 Pro, $100 Growth, $400 Scale).
+  unit: months
+  aggregation: sum
+  dimensions:
+  - organization
+  - plan
+principles:
+- name: Visibility
+  description: Reconcile gross sales against Polar fees in the dashboard and via the Orders / Subscriptions export and webhook events.
+- name: Allocation
+  description: Tag products and use customer external IDs and metadata to map fees and revenue to internal cost centers and teams.
+- name: Optimization
+  description: Move to a higher monthly plan once sales clear its breakeven (Pro ~$1,379, Growth ~$5,634, Scale ~$19,048 per month) to lower the variable rate; batch payouts to reduce per-payout fees.
+- name: Accountability
+  description: Review net-of-fee revenue monthly per product and per plan, and monitor dispute rates to control $15 dispute fees.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

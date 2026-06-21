@@ -1,0 +1,222 @@
+aid: polar-sh
+url: https://raw.githubusercontent.com/api-evangelist/polar-sh/refs/heads/main/apis.yml
+name: Polar
+kind: company
+description: Polar is an open-source, developer-first monetization platform that acts
+  as a Merchant of Record (MoR), handling billing, payments, and global sales tax so
+  software teams can sell digital products, subscriptions, usage-based billing, and
+  license keys. The Polar API (https://api.polar.sh/v1) exposes products, prices,
+  checkouts, customers, subscriptions, orders, benefits, license keys, a customer
+  portal, usage meters/events, and webhooks behind Bearer organization access tokens.
+  Not affiliated with Polar Electro (fitness wearables) or the Polaris design system.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Billing
+- Payments
+- Merchant of Record
+- Monetization
+- Subscriptions
+- Usage Based Billing
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: polar-sh:products-prices
+  name: Polar Products & Prices API
+  tags:
+  - Products
+  - Prices
+  - Catalog
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
+  properties:
+  - url: https://polar.sh/docs/features/products
+    type: Documentation
+  - url: https://polar.sh/docs/api-reference/products/list
+    type: APIReference
+  - url: openapi/polar-sh-openapi.yml
+    type: OpenAPI
+  - url: collections/polar-sh.postman_collection.json
+    type: PostmanCollection
+  - url: collections/polar-sh.opencollection.json
+    type: OpenCollection
+  description: Create and manage the product catalog and its embedded pricing - one-time,
+    recurring (monthly/yearly), and metered/usage-based prices - and attach benefits
+    to products.
+- aid: polar-sh:checkouts
+  name: Polar Checkouts API
+  tags:
+  - Checkouts
+  - Payments
+  - Checkout Links
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://polar.sh/docs/api-reference/checkouts
+  baseURL: https://api.polar.sh/v1
+  properties:
+  - url: https://polar.sh/docs/features/checkout/session
+    type: Documentation
+  - url: https://polar.sh/docs/api-reference/checkouts/create-session
+    type: APIReference
+  - url: openapi/polar-sh-openapi.yml
+    type: OpenAPI
+  - url: collections/polar-sh.postman_collection.json
+    type: PostmanCollection
+  - url: collections/polar-sh.opencollection.json
+    type: OpenCollection
+  description: Create and confirm hosted checkout sessions and reusable checkout links
+    that collect payment, apply discounts, and convert customers into orders and
+    subscriptions.
+- aid: polar-sh:customers
+  name: Polar Customers API
+  tags:
+  - Customers
+  - Customer State
+  - External ID
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://polar.sh/docs/api-reference/customers
+  baseURL: https://api.polar.sh/v1
+  properties:
+  - url: https://polar.sh/docs/features/customer-management
+    type: Documentation
+  - url: https://polar.sh/docs/api-reference/customers/list
+    type: APIReference
+  - url: openapi/polar-sh-openapi.yml
+    type: OpenAPI
+  - url: collections/polar-sh.postman_collection.json
+    type: PostmanCollection
+  - url: collections/polar-sh.opencollection.json
+    type: OpenCollection
+  description: Manage customers by Polar ID or your own external ID, read aggregated
+    customer state (active subscriptions, granted benefits, meters), and list payment
+    methods.
+- aid: polar-sh:subscriptions
+  name: Polar Subscriptions API
+  tags:
+  - Subscriptions
+  - Recurring Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://polar.sh/docs/api-reference/subscriptions
+  baseURL: https://api.polar.sh/v1
+  properties:
+  - url: https://polar.sh/docs/features/subscriptions
+    type: Documentation
+  - url: https://polar.sh/docs/api-reference/subscriptions/list
+    type: APIReference
+  - url: openapi/polar-sh-openapi.yml
+    type: OpenAPI
+  - url: collections/polar-sh.postman_collection.json
+    type: PostmanCollection
+  - url: collections/polar-sh.opencollection.json
+    type: OpenCollection
+  description: List, create, update, and revoke recurring subscriptions, including
+    proration on plan changes and export of subscription records.
+- aid: polar-sh:orders
+  name: Polar Orders API
+  tags:
+  - Orders
+  - Invoices
+  - Receipts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://polar.sh/docs/api-reference/orders
+  baseURL: https://api.polar.sh/v1
+  properties:
+  - url: https://polar.sh/docs/features/orders
+    type: Documentation
+  - url: https://polar.sh/docs/api-reference/orders/list
+    type: APIReference
+  - url: openapi/polar-sh-openapi.yml
+    type: OpenAPI
+  - url: collections/polar-sh.postman_collection.json
+    type: PostmanCollection
+  - url: collections/polar-sh.opencollection.json
+    type: OpenCollection
+  description: Retrieve transaction records (one-time purchases and subscription
+    renewals), generate and download invoices and receipts, and export order history.
+- aid: polar-sh:benefits-license-keys
+  name: Polar Benefits & License Keys API
+  tags:
+  - Benefits
+  - License Keys
+  - Entitlements
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://polar.sh/docs/api-reference/benefits
+  baseURL: https://api.polar.sh/v1
+  properties:
+  - url: https://polar.sh/docs/features/benefits
+    type: Documentation
+  - url: https://polar.sh/docs/api-reference/license-keys/list
+    type: APIReference
+  - url: openapi/polar-sh-openapi.yml
+    type: OpenAPI
+  - url: collections/polar-sh.postman_collection.json
+    type: PostmanCollection
+  - url: collections/polar-sh.opencollection.json
+    type: OpenCollection
+  description: Define benefits (entitlements such as license keys, file downloads,
+    Discord/GitHub access) attached to products, track benefit grants, and issue,
+    validate, activate, and deactivate license keys.
+- aid: polar-sh:meters-events
+  name: Polar Meters & Events API
+  tags:
+  - Meters
+  - Events
+  - Usage Based Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://polar.sh/docs/api-reference/meters
+  baseURL: https://api.polar.sh/v1
+  properties:
+  - url: https://polar.sh/docs/features/usage-based-billing/introduction
+    type: Documentation
+  - url: https://polar.sh/docs/api-reference/events/ingest
+    type: APIReference
+  - url: openapi/polar-sh-openapi.yml
+    type: OpenAPI
+  - url: collections/polar-sh.postman_collection.json
+    type: PostmanCollection
+  - url: collections/polar-sh.opencollection.json
+    type: OpenCollection
+  description: Ingest usage events and define meters that aggregate those events into
+    billable quantities for usage-based (metered) prices, with per-customer meter
+    balances.
+- aid: polar-sh:webhooks
+  name: Polar Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Deliveries
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://polar.sh/docs/api-reference/webhooks
+  baseURL: https://api.polar.sh/v1
+  properties:
+  - url: https://polar.sh/docs/integrate/webhooks/endpoints
+    type: Documentation
+  - url: https://polar.sh/docs/api-reference/webhooks/create
+    type: APIReference
+  - url: openapi/polar-sh-openapi.yml
+    type: OpenAPI
+  - url: collections/polar-sh.postman_collection.json
+    type: PostmanCollection
+  - url: collections/polar-sh.opencollection.json
+    type: OpenCollection
+  description: Register and manage webhook endpoints, rotate signing secrets, and
+    inspect or redeliver webhook deliveries for order, subscription, benefit, and
+    checkout lifecycle events.
+common:
+- type: GitHubOrganization
+  url: https://github.com/polarsource
+- type: LinkedIn
+  url: https://www.linkedin.com/company/polar-software
+- type: Website
+  url: https://polar.sh/
+- type: Documentation
+  url: https://polar.sh/docs
+- type: Plans
+  url: plans/polar-sh-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/polar-sh-rate-limits.yml
+- type: FinOps
+  url: finops/polar-sh-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

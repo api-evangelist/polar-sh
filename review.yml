@@ -1,0 +1,90 @@
+aid: polar-sh
+name: Polar
+review:
+  question: Does Polar expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Polar's only documented asynchronous surface is outbound HTTP webhooks
+    (organization-registered endpoints that receive signed event payloads such
+    as order.created, subscription.active, and benefit_grant.created). Webhooks
+    are server-to-server HTTP POST callbacks, not a client-facing streaming
+    transport. No AsyncAPI document was authored because there is no SSE or
+    WebSocket stream to model; the webhook surface is already represented as
+    REST management endpoints in openapi/polar-sh-openapi.yml.
+findings:
+  summary: |
+    Polar does not publish a documented public WebSocket API. The Polar
+    platform exposes a REST (HTTPS) API under https://api.polar.sh/v1
+    (sandbox at https://sandbox-api.polar.sh/v1), authenticated with a Bearer
+    Organization Access Token. Asynchronous, event-driven delivery is provided
+    exclusively through outbound HTTP webhooks, where Polar POSTs signed event
+    payloads to organization-registered endpoint URLs. No realtime,
+    bidirectional, or streaming WebSocket (ws:// or wss://) endpoint is
+    documented for any Polar product as of the review date. There is also no
+    documented Server-Sent Events (SSE) stream.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.polar.sh/v1
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: Outbound server-to-server HTTP POST callbacks to organization-registered endpoint URLs with signed payloads. Not a client-facing stream.
+      documented: true
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events stream is documented in Polar's API reference.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Polar's API reference or product pages as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.polar.sh/v1/products/
+    - POST   https://api.polar.sh/v1/products/
+    - GET    https://api.polar.sh/v1/products/{id}
+    - POST   https://api.polar.sh/v1/checkouts/
+    - GET    https://api.polar.sh/v1/checkouts/{id}
+    - POST   https://api.polar.sh/v1/checkout-links/
+    - GET    https://api.polar.sh/v1/customers/
+    - POST   https://api.polar.sh/v1/customers/
+    - GET    https://api.polar.sh/v1/customers/{id}/state
+    - GET    https://api.polar.sh/v1/subscriptions/
+    - DELETE https://api.polar.sh/v1/subscriptions/{id}
+    - GET    https://api.polar.sh/v1/orders/
+    - GET    https://api.polar.sh/v1/orders/{id}/invoice
+    - GET    https://api.polar.sh/v1/benefits/
+    - POST   https://api.polar.sh/v1/benefits/
+    - GET    https://api.polar.sh/v1/license-keys/
+    - POST   https://api.polar.sh/v1/license-keys/validate
+    - POST   https://api.polar.sh/v1/license-keys/activate
+    - GET    https://api.polar.sh/v1/meters/
+    - POST   https://api.polar.sh/v1/meters/
+    - POST   https://api.polar.sh/v1/events/ingest
+    - GET    https://api.polar.sh/v1/webhooks/endpoints
+    - POST   https://api.polar.sh/v1/webhooks/endpoints
+    - POST   https://api.polar.sh/v1/webhooks/events/{id}/redeliver
+sources:
+  - url: https://polar.sh/docs/api-reference/introduction
+    type: APIReference
+    note: Documents REST base URL https://api.polar.sh/v1, Bearer OAT auth, and RPM rate limits; no WebSocket mentioned.
+  - url: https://api.polar.sh/openapi.json
+    type: OpenAPI
+    note: Machine-generated OpenAPI 3.1 document; all 125 documented operations are HTTPS REST.
+  - url: https://polar.sh/docs/integrate/webhooks/endpoints
+    type: Documentation
+    note: Asynchronous delivery is outbound HTTP webhooks (signed POST callbacks), not WebSocket.
+  - url: https://github.com/polarsource/polar
+    type: SourceCode
+    note: Open-source backend (FastAPI/Python) exposes REST and webhook delivery; no documented WebSocket API surface.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists. Polar's only event-driven
+    transport is outbound HTTP webhooks, which are modeled as REST management
+    endpoints in openapi/polar-sh-openapi.yml. No AsyncAPI document was
+    authored.

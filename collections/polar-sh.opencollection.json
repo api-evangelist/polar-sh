@@ -1,0 +1,588 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polar API",
+    "version": "2026-04"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/products/"
+          },
+          "docs": "List Products"
+        },
+        {
+          "info": {
+            "name": "Create Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/products/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Product"
+        },
+        {
+          "info": {
+            "name": "Get Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/products/{id}"
+          },
+          "docs": "Get Product"
+        },
+        {
+          "info": {
+            "name": "Update Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.polar.sh/v1/products/{id}",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Product"
+        },
+        {
+          "info": {
+            "name": "Update Product Benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/products/{id}/benefits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Product Benefits"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "checkouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Checkout Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/checkouts/"
+          },
+          "docs": "List Checkout Sessions"
+        },
+        {
+          "info": {
+            "name": "Create Checkout Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/checkouts/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Checkout Session"
+        },
+        {
+          "info": {
+            "name": "Get Checkout Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/checkouts/{id}"
+          },
+          "docs": "Get Checkout Session"
+        },
+        {
+          "info": {
+            "name": "List Checkout Links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/checkout-links/"
+          },
+          "docs": "List Checkout Links"
+        },
+        {
+          "info": {
+            "name": "Create Checkout Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/checkout-links/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Checkout Link"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/customers/"
+          },
+          "docs": "List Customers"
+        },
+        {
+          "info": {
+            "name": "Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/customers/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Customer"
+        },
+        {
+          "info": {
+            "name": "Get Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/customers/{id}"
+          },
+          "docs": "Get Customer"
+        },
+        {
+          "info": {
+            "name": "Delete Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.polar.sh/v1/customers/{id}"
+          },
+          "docs": "Delete Customer"
+        },
+        {
+          "info": {
+            "name": "Get Customer State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/customers/{id}/state"
+          },
+          "docs": "Get Customer State"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/subscriptions/"
+          },
+          "docs": "List Subscriptions"
+        },
+        {
+          "info": {
+            "name": "Get Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/subscriptions/{id}"
+          },
+          "docs": "Get Subscription"
+        },
+        {
+          "info": {
+            "name": "Update Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.polar.sh/v1/subscriptions/{id}",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Subscription"
+        },
+        {
+          "info": {
+            "name": "Revoke Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.polar.sh/v1/subscriptions/{id}"
+          },
+          "docs": "Revoke Subscription"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/orders/"
+          },
+          "docs": "List Orders"
+        },
+        {
+          "info": {
+            "name": "Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/orders/{id}"
+          },
+          "docs": "Get Order"
+        },
+        {
+          "info": {
+            "name": "Get Order Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/orders/{id}/invoice"
+          },
+          "docs": "Get Order Invoice"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "benefits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/benefits/"
+          },
+          "docs": "List Benefits"
+        },
+        {
+          "info": {
+            "name": "Create Benefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/benefits/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Benefit"
+        },
+        {
+          "info": {
+            "name": "Get Benefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/benefits/{id}"
+          },
+          "docs": "Get Benefit"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "license_keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List License Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/license-keys/"
+          },
+          "docs": "List License Keys"
+        },
+        {
+          "info": {
+            "name": "Get License Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/license-keys/{id}"
+          },
+          "docs": "Get License Key"
+        },
+        {
+          "info": {
+            "name": "Validate License Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/license-keys/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate License Key"
+        },
+        {
+          "info": {
+            "name": "Activate License Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/license-keys/activate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate License Key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "meters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Meters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/meters/"
+          },
+          "docs": "List Meters"
+        },
+        {
+          "info": {
+            "name": "Create Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/meters/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Meter"
+        },
+        {
+          "info": {
+            "name": "Get Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/meters/{id}"
+          },
+          "docs": "Get Meter"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/events/"
+          },
+          "docs": "List Events"
+        },
+        {
+          "info": {
+            "name": "Ingest Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/events/ingest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ingest Events"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Webhook Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/webhooks/endpoints"
+          },
+          "docs": "List Webhook Endpoints"
+        },
+        {
+          "info": {
+            "name": "Create Webhook Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/webhooks/endpoints",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Webhook Endpoint"
+        },
+        {
+          "info": {
+            "name": "Get Webhook Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/webhooks/endpoints/{id}"
+          },
+          "docs": "Get Webhook Endpoint"
+        },
+        {
+          "info": {
+            "name": "Delete Webhook Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.polar.sh/v1/webhooks/endpoints/{id}"
+          },
+          "docs": "Delete Webhook Endpoint"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "customer_portal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate License Key (Customer Portal)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/customer-portal/license-keys/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate License Key (Customer Portal)"
+        }
+      ]
+    }
+  ]
+}

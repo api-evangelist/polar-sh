@@ -1,0 +1,54 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Polar
+providerId: polar-sh
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Billing
+- Payments
+- Merchant of Record
+- Monetization
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Polar API enforces per-organization (and per-customer for portal
+  endpoints) rate limits expressed as requests per minute. Production allows a
+  higher ceiling than the sandbox environment, and a small number of
+  unauthenticated validation endpoints (such as license-key validation) are
+  limited per second. Exceeding a limit returns HTTP 429.
+notes: >-
+  Limits verified against the Polar API reference introduction on 2026-06-21;
+  values may change. Verify in the Polar documentation at reconciliation.
+sources:
+- https://polar.sh/docs/api-reference/introduction
+- https://polar.sh/docs
+responseCodes:
+  throttled: 429
+limits:
+- name: Production Requests Per Minute
+  scope: organization
+  metric: requests
+  limit: 500 per minute
+  notes: Per organization or customer in the production environment (api.polar.sh).
+- name: Sandbox Requests Per Minute
+  scope: organization
+  metric: requests
+  limit: 100 per minute
+  notes: Per organization or customer in the sandbox environment (sandbox-api.polar.sh).
+- name: Unauthenticated Validation Endpoints
+  scope: ip
+  metric: requests
+  limit: 3 per second
+  notes: Applies to unauthenticated validation endpoints such as license-key validation.
+policies:
+- name: Environment Tiers
+  description: Production grants a higher RPM ceiling than the sandbox environment.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter on HTTP 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
