@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/polar-sh-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: oat
+  type: http
+  scheme: bearer
+  description: Organization Access Token used for backend, organization-scoped operations.
+  sources:
+  - openapi/polar-sh-openapi.yml

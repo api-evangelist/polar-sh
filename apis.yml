@@ -203,6 +203,10 @@ apis:
     inspect or redeliver webhook deliveries for order, subscription, benefit, and
     checkout lifecycle events.
 common:
+- type: DomainSecurity
+  url: security/polar-sh-domain-security.yml
+- type: Authentication
+  url: authentication/polar-sh-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/polarsource
 - type: LinkedIn
@@ -217,6 +221,8 @@ common:
   url: rate-limits/polar-sh-rate-limits.yml
 - type: FinOps
   url: finops/polar-sh-finops.yml
+- url: https://polar.sh/blog
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
