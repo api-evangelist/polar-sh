@@ -203,6 +203,8 @@ apis:
     inspect or redeliver webhook deliveries for order, subscription, benefit, and
     checkout lifecycle events.
 common:
+- type: AgenticAccess
+  url: agentic-access/polar-sh-agentic-access.yml
 - type: DomainSecurity
   url: security/polar-sh-domain-security.yml
 - type: Authentication
