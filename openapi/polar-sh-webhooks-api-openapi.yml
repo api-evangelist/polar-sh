@@ -1,0 +1,165 @@
+openapi: 3.0.1
+info:
+  title: Polar benefits webhooks API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  termsOfService: https://polar.sh/legal/terms
+  contact:
+    name: Polar Support
+    email: support@polar.sh
+    url: https://polar.sh/docs
+  license:
+    name: Apache-2.0
+    url: https://github.com/polarsource/polar/blob/main/LICENSE
+  version: 2026-04
+servers:
+- url: https://api.polar.sh/v1
+  description: Production environment
+- url: https://sandbox-api.polar.sh/v1
+  description: Sandbox environment
+security:
+- oat: []
+tags:
+- name: webhooks
+  description: Webhook endpoint management and deliveries.
+paths:
+  /webhooks/endpoints:
+    get:
+      operationId: webhooks:listEndpoints
+      tags:
+      - webhooks
+      summary: List Webhook Endpoints
+      responses:
+        '200':
+          description: A paginated list of webhook endpoints.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResourceWebhookEndpoint'
+    post:
+      operationId: webhooks:createEndpoint
+      tags:
+      - webhooks
+      summary: Create Webhook Endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookEndpointCreate'
+      responses:
+        '201':
+          description: The created webhook endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEndpoint'
+  /webhooks/endpoints/{id}:
+    get:
+      operationId: webhooks:getEndpoint
+      tags:
+      - webhooks
+      summary: Get Webhook Endpoint
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The requested webhook endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEndpoint'
+    delete:
+      operationId: webhooks:deleteEndpoint
+      tags:
+      - webhooks
+      summary: Delete Webhook Endpoint
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '204':
+          description: The webhook endpoint was deleted.
+components:
+  schemas:
+    WebhookEndpointCreate:
+      type: object
+      required:
+      - url
+      properties:
+        url:
+          type: string
+        format:
+          type: string
+          enum:
+          - raw
+          - discord
+          - slack
+          default: raw
+        secret:
+          type: string
+          nullable: true
+        events:
+          type: array
+          items:
+            type: string
+            example: order.created
+    ListResourceWebhookEndpoint:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEndpoint'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+    WebhookEndpoint:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        url:
+          type: string
+        format:
+          type: string
+          enum:
+          - raw
+          - discord
+          - slack
+        events:
+          type: array
+          items:
+            type: string
+        organization_id:
+          type: string
+          format: uuid
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    oat:
+      type: http
+      scheme: bearer
+      description: Organization Access Token used for backend, organization-scoped operations.
+    pat:
+      type: http
+      scheme: bearer
+      description: Personal Access Token scoped to a user.
+    customer_session:
+      type: http
+      scheme: bearer
+      description: Customer Session token used for customer portal endpoints.

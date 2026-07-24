@@ -1,0 +1,344 @@
+openapi: 3.0.1
+info:
+  title: Polar benefits products API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  termsOfService: https://polar.sh/legal/terms
+  contact:
+    name: Polar Support
+    email: support@polar.sh
+    url: https://polar.sh/docs
+  license:
+    name: Apache-2.0
+    url: https://github.com/polarsource/polar/blob/main/LICENSE
+  version: 2026-04
+servers:
+- url: https://api.polar.sh/v1
+  description: Production environment
+- url: https://sandbox-api.polar.sh/v1
+  description: Sandbox environment
+security:
+- oat: []
+tags:
+- name: products
+  description: Product catalog and embedded pricing.
+paths:
+  /products/:
+    get:
+      operationId: products:list
+      tags:
+      - products
+      summary: List Products
+      parameters:
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: is_archived
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+      responses:
+        '200':
+          description: A paginated list of products.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResourceProduct'
+    post:
+      operationId: products:create
+      tags:
+      - products
+      summary: Create Product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '201':
+          description: The created product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /products/{id}:
+    get:
+      operationId: products:get
+      tags:
+      - products
+      summary: Get Product
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The requested product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    patch:
+      operationId: products:update
+      tags:
+      - products
+      summary: Update Product
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdate'
+      responses:
+        '200':
+          description: The updated product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /products/{id}/benefits:
+    post:
+      operationId: products:updateBenefits
+      tags:
+      - products
+      summary: Update Product Benefits
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - benefits
+              properties:
+                benefits:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+      responses:
+        '200':
+          description: The updated product with attached benefits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+components:
+  schemas:
+    ListResourceProduct:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ProductPriceCreate:
+      type: object
+      required:
+      - amount_type
+      properties:
+        amount_type:
+          type: string
+          enum:
+          - fixed
+          - custom
+          - free
+          - metered_unit
+        price_amount:
+          type: integer
+          nullable: true
+        price_currency:
+          type: string
+          default: usd
+        meter_id:
+          type: string
+          format: uuid
+          nullable: true
+        unit_amount:
+          type: string
+          nullable: true
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        modified_at:
+          type: string
+          format: date-time
+          nullable: true
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        recurring_interval:
+          type: string
+          nullable: true
+          enum:
+          - month
+          - year
+          - null
+        is_recurring:
+          type: boolean
+        is_archived:
+          type: boolean
+        organization_id:
+          type: string
+          format: uuid
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductPrice'
+        benefits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Benefit'
+        metadata:
+          type: object
+          additionalProperties: true
+    ProductUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        is_archived:
+          type: boolean
+    ProductCreate:
+      type: object
+      required:
+      - name
+      - prices
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        recurring_interval:
+          type: string
+          nullable: true
+          enum:
+          - month
+          - year
+          - null
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductPriceCreate'
+        organization_id:
+          type: string
+          format: uuid
+          nullable: true
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+    ProductPrice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount_type:
+          type: string
+          enum:
+          - fixed
+          - custom
+          - free
+          - metered_unit
+        price_amount:
+          type: integer
+          nullable: true
+          description: Amount in the smallest currency unit (e.g. cents).
+        price_currency:
+          type: string
+          nullable: true
+          example: usd
+        recurring_interval:
+          type: string
+          nullable: true
+          enum:
+          - month
+          - year
+          - null
+    Benefit:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        type:
+          type: string
+          enum:
+          - custom
+          - discord
+          - github_repository
+          - downloadables
+          - license_keys
+          - meter_credit
+        description:
+          type: string
+        selectable:
+          type: boolean
+        deletable:
+          type: boolean
+        organization_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    oat:
+      type: http
+      scheme: bearer
+      description: Organization Access Token used for backend, organization-scoped operations.
+    pat:
+      type: http
+      scheme: bearer
+      description: Personal Access Token scoped to a user.
+    customer_session:
+      type: http
+      scheme: bearer
+      description: Customer Session token used for customer portal endpoints.

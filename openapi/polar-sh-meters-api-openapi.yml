@@ -1,0 +1,146 @@
+openapi: 3.0.1
+info:
+  title: Polar benefits meters API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  termsOfService: https://polar.sh/legal/terms
+  contact:
+    name: Polar Support
+    email: support@polar.sh
+    url: https://polar.sh/docs
+  license:
+    name: Apache-2.0
+    url: https://github.com/polarsource/polar/blob/main/LICENSE
+  version: 2026-04
+servers:
+- url: https://api.polar.sh/v1
+  description: Production environment
+- url: https://sandbox-api.polar.sh/v1
+  description: Sandbox environment
+security:
+- oat: []
+tags:
+- name: meters
+  description: Usage meters aggregating ingested events.
+paths:
+  /meters/:
+    get:
+      operationId: meters:list
+      tags:
+      - meters
+      summary: List Meters
+      responses:
+        '200':
+          description: A paginated list of meters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResourceMeter'
+    post:
+      operationId: meters:create
+      tags:
+      - meters
+      summary: Create Meter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeterCreate'
+      responses:
+        '201':
+          description: The created meter.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meter'
+  /meters/{id}:
+    get:
+      operationId: meters:get
+      tags:
+      - meters
+      summary: Get Meter
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The requested meter.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meter'
+components:
+  schemas:
+    ListResourceMeter:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Meter'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Meter:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        name:
+          type: string
+        aggregation:
+          type: object
+          additionalProperties: true
+          description: How matching events are aggregated (e.g. count or sum over a property).
+        filter:
+          type: object
+          additionalProperties: true
+          description: Clauses selecting which events this meter counts.
+        organization_id:
+          type: string
+          format: uuid
+    MeterCreate:
+      type: object
+      required:
+      - name
+      - filter
+      - aggregation
+      properties:
+        name:
+          type: string
+        filter:
+          type: object
+          additionalProperties: true
+        aggregation:
+          type: object
+          additionalProperties: true
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    oat:
+      type: http
+      scheme: bearer
+      description: Organization Access Token used for backend, organization-scoped operations.
+    pat:
+      type: http
+      scheme: bearer
+      description: Personal Access Token scoped to a user.
+    customer_session:
+      type: http
+      scheme: bearer
+      description: Customer Session token used for customer portal endpoints.

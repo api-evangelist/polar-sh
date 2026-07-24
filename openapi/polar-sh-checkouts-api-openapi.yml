@@ -1,0 +1,216 @@
+openapi: 3.0.1
+info:
+  title: Polar benefits checkouts API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  termsOfService: https://polar.sh/legal/terms
+  contact:
+    name: Polar Support
+    email: support@polar.sh
+    url: https://polar.sh/docs
+  license:
+    name: Apache-2.0
+    url: https://github.com/polarsource/polar/blob/main/LICENSE
+  version: 2026-04
+servers:
+- url: https://api.polar.sh/v1
+  description: Production environment
+- url: https://sandbox-api.polar.sh/v1
+  description: Sandbox environment
+security:
+- oat: []
+tags:
+- name: checkouts
+  description: Hosted checkout sessions and reusable checkout links.
+paths:
+  /checkouts/:
+    get:
+      operationId: checkouts:list
+      tags:
+      - checkouts
+      summary: List Checkout Sessions
+      responses:
+        '200':
+          description: A paginated list of checkout sessions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResourceCheckout'
+    post:
+      operationId: checkouts:create
+      tags:
+      - checkouts
+      summary: Create Checkout Session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutCreate'
+      responses:
+        '201':
+          description: The created checkout session.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Checkout'
+  /checkouts/{id}:
+    get:
+      operationId: checkouts:get
+      tags:
+      - checkouts
+      summary: Get Checkout Session
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The requested checkout session.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Checkout'
+  /checkout-links/:
+    get:
+      operationId: checkoutLinks:list
+      tags:
+      - checkouts
+      summary: List Checkout Links
+      responses:
+        '200':
+          description: A paginated list of checkout links.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResourceCheckout'
+    post:
+      operationId: checkoutLinks:create
+      tags:
+      - checkouts
+      summary: Create Checkout Link
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - products
+              properties:
+                products:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                success_url:
+                  type: string
+                  nullable: true
+      responses:
+        '201':
+          description: The created checkout link.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+components:
+  schemas:
+    CheckoutCreate:
+      type: object
+      required:
+      - products
+      properties:
+        products:
+          type: array
+          description: One or more product IDs offered in the checkout.
+          items:
+            type: string
+            format: uuid
+        customer_email:
+          type: string
+          nullable: true
+        customer_external_id:
+          type: string
+          nullable: true
+        success_url:
+          type: string
+          nullable: true
+        discount_id:
+          type: string
+          format: uuid
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties: true
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+    Checkout:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - open
+          - expired
+          - confirmed
+          - succeeded
+          - failed
+        client_secret:
+          type: string
+        url:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+        product_id:
+          type: string
+          format: uuid
+          nullable: true
+        amount:
+          type: integer
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        customer_email:
+          type: string
+          nullable: true
+        success_url:
+          type: string
+          nullable: true
+    ListResourceCheckout:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Checkout'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    oat:
+      type: http
+      scheme: bearer
+      description: Organization Access Token used for backend, organization-scoped operations.
+    pat:
+      type: http
+      scheme: bearer
+      description: Personal Access Token scoped to a user.
+    customer_session:
+      type: http
+      scheme: bearer
+      description: Customer Session token used for customer portal endpoints.

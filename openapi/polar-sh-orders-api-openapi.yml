@@ -1,0 +1,148 @@
+openapi: 3.0.1
+info:
+  title: Polar benefits orders API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  termsOfService: https://polar.sh/legal/terms
+  contact:
+    name: Polar Support
+    email: support@polar.sh
+    url: https://polar.sh/docs
+  license:
+    name: Apache-2.0
+    url: https://github.com/polarsource/polar/blob/main/LICENSE
+  version: 2026-04
+servers:
+- url: https://api.polar.sh/v1
+  description: Production environment
+- url: https://sandbox-api.polar.sh/v1
+  description: Sandbox environment
+security:
+- oat: []
+tags:
+- name: orders
+  description: Orders, invoices, and receipts.
+paths:
+  /orders/:
+    get:
+      operationId: orders:list
+      tags:
+      - orders
+      summary: List Orders
+      responses:
+        '200':
+          description: A paginated list of orders.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResourceOrder'
+  /orders/{id}:
+    get:
+      operationId: orders:get
+      tags:
+      - orders
+      summary: Get Order
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The requested order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /orders/{id}/invoice:
+    get:
+      operationId: orders:getInvoice
+      tags:
+      - orders
+      summary: Get Order Invoice
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The order invoice.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+components:
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+    ListResourceOrder:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - pending
+          - paid
+          - refunded
+          - partially_refunded
+        billing_reason:
+          type: string
+          enum:
+          - purchase
+          - subscription_create
+          - subscription_cycle
+          - subscription_update
+        amount:
+          type: integer
+        tax_amount:
+          type: integer
+        currency:
+          type: string
+        customer_id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        subscription_id:
+          type: string
+          format: uuid
+          nullable: true
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    oat:
+      type: http
+      scheme: bearer
+      description: Organization Access Token used for backend, organization-scoped operations.
+    pat:
+      type: http
+      scheme: bearer
+      description: Personal Access Token scoped to a user.
+    customer_session:
+      type: http
+      scheme: bearer
+      description: Customer Session token used for customer portal endpoints.

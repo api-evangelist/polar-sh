@@ -1,0 +1,175 @@
+openapi: 3.0.1
+info:
+  title: Polar benefits customers API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  termsOfService: https://polar.sh/legal/terms
+  contact:
+    name: Polar Support
+    email: support@polar.sh
+    url: https://polar.sh/docs
+  license:
+    name: Apache-2.0
+    url: https://github.com/polarsource/polar/blob/main/LICENSE
+  version: 2026-04
+servers:
+- url: https://api.polar.sh/v1
+  description: Production environment
+- url: https://sandbox-api.polar.sh/v1
+  description: Sandbox environment
+security:
+- oat: []
+tags:
+- name: customers
+  description: Customers, external IDs, and aggregated customer state.
+paths:
+  /customers/:
+    get:
+      operationId: customers:list
+      tags:
+      - customers
+      summary: List Customers
+      responses:
+        '200':
+          description: A paginated list of customers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResourceCustomer'
+    post:
+      operationId: customers:create
+      tags:
+      - customers
+      summary: Create Customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+      responses:
+        '201':
+          description: The created customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{id}:
+    get:
+      operationId: customers:get
+      tags:
+      - customers
+      summary: Get Customer
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The requested customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    delete:
+      operationId: customers:delete
+      tags:
+      - customers
+      summary: Delete Customer
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '204':
+          description: The customer was deleted.
+  /customers/{id}/state:
+    get:
+      operationId: customers:getState
+      tags:
+      - customers
+      summary: Get Customer State
+      description: Returns the aggregated state of a customer - active subscriptions, granted benefits, and active meters - in a single response.
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The aggregated customer state.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        name:
+          type: string
+          nullable: true
+        external_id:
+          type: string
+          nullable: true
+        organization_id:
+          type: string
+          format: uuid
+        metadata:
+          type: object
+          additionalProperties: true
+    CustomerCreate:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+          nullable: true
+        external_id:
+          type: string
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties: true
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+    ListResourceCustomer:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    oat:
+      type: http
+      scheme: bearer
+      description: Organization Access Token used for backend, organization-scoped operations.
+    pat:
+      type: http
+      scheme: bearer
+      description: Personal Access Token scoped to a user.
+    customer_session:
+      type: http
+      scheme: bearer
+      description: Customer Session token used for customer portal endpoints.

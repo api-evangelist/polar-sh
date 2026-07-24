@@ -1,0 +1,217 @@
+openapi: 3.0.1
+info:
+  title: Polar benefits license_keys API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  termsOfService: https://polar.sh/legal/terms
+  contact:
+    name: Polar Support
+    email: support@polar.sh
+    url: https://polar.sh/docs
+  license:
+    name: Apache-2.0
+    url: https://github.com/polarsource/polar/blob/main/LICENSE
+  version: 2026-04
+servers:
+- url: https://api.polar.sh/v1
+  description: Production environment
+- url: https://sandbox-api.polar.sh/v1
+  description: Sandbox environment
+security:
+- oat: []
+tags:
+- name: license_keys
+  description: License key issuance, validation, and activation.
+paths:
+  /license-keys/:
+    get:
+      operationId: licenseKeys:list
+      tags:
+      - license_keys
+      summary: List License Keys
+      responses:
+        '200':
+          description: A paginated list of license keys.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResourceLicenseKey'
+  /license-keys/{id}:
+    get:
+      operationId: licenseKeys:get
+      tags:
+      - license_keys
+      summary: Get License Key
+      parameters:
+      - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: The requested license key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseKey'
+  /license-keys/validate:
+    post:
+      operationId: licenseKeys:validate
+      tags:
+      - license_keys
+      summary: Validate License Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - key
+              - organization_id
+              properties:
+                key:
+                  type: string
+                organization_id:
+                  type: string
+                  format: uuid
+                benefit_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: The validation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseKey'
+  /license-keys/activate:
+    post:
+      operationId: licenseKeys:activate
+      tags:
+      - license_keys
+      summary: Activate License Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - key
+              - organization_id
+              - label
+              properties:
+                key:
+                  type: string
+                organization_id:
+                  type: string
+                  format: uuid
+                label:
+                  type: string
+      responses:
+        '200':
+          description: The activation record.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /customer-portal/license-keys/validate:
+    post:
+      operationId: customerPortal:validateLicenseKey
+      tags:
+      - license_keys
+      summary: Validate License Key (Customer Portal)
+      description: Customer-facing license key validation using a Customer Session token rather than an Organization Access Token.
+      security:
+      - customer_session: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - key
+              - organization_id
+              properties:
+                key:
+                  type: string
+                organization_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: The validation result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseKey'
+components:
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+    ListResourceLicenseKey:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseKey'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    LicenseKey:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        key:
+          type: string
+        status:
+          type: string
+          enum:
+          - granted
+          - revoked
+          - disabled
+        organization_id:
+          type: string
+          format: uuid
+        customer_id:
+          type: string
+          format: uuid
+        benefit_id:
+          type: string
+          format: uuid
+        usage:
+          type: integer
+        limit_usage:
+          type: integer
+          nullable: true
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    oat:
+      type: http
+      scheme: bearer
+      description: Organization Access Token used for backend, organization-scoped operations.
+    pat:
+      type: http
+      scheme: bearer
+      description: Personal Access Token scoped to a user.
+    customer_session:
+      type: http
+      scheme: bearer
+      description: Customer Session token used for customer portal endpoints.

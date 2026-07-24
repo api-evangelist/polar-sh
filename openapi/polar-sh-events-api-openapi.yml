@@ -1,0 +1,104 @@
+openapi: 3.0.1
+info:
+  title: Polar benefits events API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  termsOfService: https://polar.sh/legal/terms
+  contact:
+    name: Polar Support
+    email: support@polar.sh
+    url: https://polar.sh/docs
+  license:
+    name: Apache-2.0
+    url: https://github.com/polarsource/polar/blob/main/LICENSE
+  version: 2026-04
+servers:
+- url: https://api.polar.sh/v1
+  description: Production environment
+- url: https://sandbox-api.polar.sh/v1
+  description: Sandbox environment
+security:
+- oat: []
+tags:
+- name: events
+  description: Usage event ingestion for metered billing.
+paths:
+  /events/:
+    get:
+      operationId: events:list
+      tags:
+      - events
+      summary: List Events
+      responses:
+        '200':
+          description: A paginated list of ingested events.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /events/ingest:
+    post:
+      operationId: events:ingest
+      tags:
+      - events
+      summary: Ingest Events
+      description: Ingest a batch of usage events. Events are later aggregated by meters into billable quantities for usage-based (metered) prices.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventsIngest'
+      responses:
+        '200':
+          description: The ingestion result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inserted:
+                    type: integer
+components:
+  schemas:
+    Event:
+      type: object
+      properties:
+        name:
+          type: string
+        external_customer_id:
+          type: string
+          nullable: true
+        customer_id:
+          type: string
+          format: uuid
+          nullable: true
+        timestamp:
+          type: string
+          format: date-time
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties: true
+    EventsIngest:
+      type: object
+      required:
+      - events
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+  securitySchemes:
+    oat:
+      type: http
+      scheme: bearer
+      description: Organization Access Token used for backend, organization-scoped operations.
+    pat:
+      type: http
+      scheme: bearer
+      description: Personal Access Token scoped to a user.
+    customer_session:
+      type: http
+      scheme: bearer
+      description: Customer Session token used for customer portal endpoints.
