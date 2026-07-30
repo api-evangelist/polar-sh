@@ -9,7 +9,20 @@ description: Polar is an open-source, developer-first monetization platform that
   checkouts, customers, subscriptions, orders, benefits, license keys, a customer
   portal, usage meters/events, and webhooks behind Bearer organization access tokens.
   Not affiliated with Polar Electro (fitness wearables) or the Polaris design system.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/polar-sh.png
 tags:
 - Billing
 - Payments
@@ -21,187 +34,512 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: polar-sh:products-prices
-  name: Polar Products & Prices API
-  tags:
-  - Products
-  - Prices
-  - Catalog
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: polar-sh:polar-sh-benefits-api
+  name: Polar benefits API
+  description: Benefits (entitlements) attached to products.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
-  properties:
-  - url: https://polar.sh/docs/features/products
-    type: Documentation
-  - url: https://polar.sh/docs/api-reference/products/list
-    type: APIReference
-  - url: openapi/polar-sh-openapi.yml
-    type: OpenAPI
-  - url: collections/polar-sh.postman_collection.json
-    type: PostmanCollection
-  - url: collections/polar-sh.opencollection.json
-    type: OpenCollection
-  description: Create and manage the product catalog and its embedded pricing - one-time,
-    recurring (monthly/yearly), and metered/usage-based prices - and attach benefits
-    to products.
-- aid: polar-sh:checkouts
-  name: Polar Checkouts API
   tags:
-  - Checkouts
-  - Payments
-  - Checkout Links
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://polar.sh/docs/api-reference/checkouts
-  baseURL: https://api.polar.sh/v1
+  - benefits
   properties:
-  - url: https://polar.sh/docs/features/checkout/session
-    type: Documentation
-  - url: https://polar.sh/docs/api-reference/checkouts/create-session
-    type: APIReference
-  - url: openapi/polar-sh-openapi.yml
-    type: OpenAPI
-  - url: collections/polar-sh.postman_collection.json
-    type: PostmanCollection
-  - url: collections/polar-sh.opencollection.json
-    type: OpenCollection
-  description: Create and confirm hosted checkout sessions and reusable checkout links
-    that collect payment, apply discounts, and convert customers into orders and
-    subscriptions.
-- aid: polar-sh:customers
-  name: Polar Customers API
+  - type: OpenAPI
+    url: openapi/polar-sh-benefits-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-checkouts-api
+  name: Polar checkouts API
+  description: Hosted checkout sessions and reusable checkout links.
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
   tags:
-  - Customers
-  - Customer State
-  - External ID
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://polar.sh/docs/api-reference/customers
-  baseURL: https://api.polar.sh/v1
+  - checkouts
   properties:
-  - url: https://polar.sh/docs/features/customer-management
-    type: Documentation
-  - url: https://polar.sh/docs/api-reference/customers/list
-    type: APIReference
-  - url: openapi/polar-sh-openapi.yml
-    type: OpenAPI
-  - url: collections/polar-sh.postman_collection.json
-    type: PostmanCollection
-  - url: collections/polar-sh.opencollection.json
-    type: OpenCollection
-  description: Manage customers by Polar ID or your own external ID, read aggregated
-    customer state (active subscriptions, granted benefits, meters), and list payment
-    methods.
-- aid: polar-sh:subscriptions
-  name: Polar Subscriptions API
+  - type: OpenAPI
+    url: openapi/polar-sh-checkouts-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-customer-portal-api
+  name: Polar customer_portal API
+  description: Customer-facing portal endpoints (Customer Session token).
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
   tags:
-  - Subscriptions
-  - Recurring Billing
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://polar.sh/docs/api-reference/subscriptions
-  baseURL: https://api.polar.sh/v1
+  - customer_portal
   properties:
-  - url: https://polar.sh/docs/features/subscriptions
-    type: Documentation
-  - url: https://polar.sh/docs/api-reference/subscriptions/list
-    type: APIReference
-  - url: openapi/polar-sh-openapi.yml
-    type: OpenAPI
-  - url: collections/polar-sh.postman_collection.json
-    type: PostmanCollection
-  - url: collections/polar-sh.opencollection.json
-    type: OpenCollection
-  description: List, create, update, and revoke recurring subscriptions, including
-    proration on plan changes and export of subscription records.
-- aid: polar-sh:orders
-  name: Polar Orders API
+  - type: OpenAPI
+    url: openapi/polar-sh-customer-portal-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-customers-api
+  name: Polar customers API
+  description: Customers, external IDs, and aggregated customer state.
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
   tags:
-  - Orders
-  - Invoices
-  - Receipts
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://polar.sh/docs/api-reference/orders
-  baseURL: https://api.polar.sh/v1
+  - customers
   properties:
-  - url: https://polar.sh/docs/features/orders
-    type: Documentation
-  - url: https://polar.sh/docs/api-reference/orders/list
-    type: APIReference
-  - url: openapi/polar-sh-openapi.yml
-    type: OpenAPI
-  - url: collections/polar-sh.postman_collection.json
-    type: PostmanCollection
-  - url: collections/polar-sh.opencollection.json
-    type: OpenCollection
-  description: Retrieve transaction records (one-time purchases and subscription
-    renewals), generate and download invoices and receipts, and export order history.
-- aid: polar-sh:benefits-license-keys
-  name: Polar Benefits & License Keys API
+  - type: OpenAPI
+    url: openapi/polar-sh-customers-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-events-api
+  name: Polar events API
+  description: Usage event ingestion for metered billing.
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
   tags:
-  - Benefits
-  - License Keys
-  - Entitlements
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://polar.sh/docs/api-reference/benefits
-  baseURL: https://api.polar.sh/v1
+  - events
   properties:
-  - url: https://polar.sh/docs/features/benefits
-    type: Documentation
-  - url: https://polar.sh/docs/api-reference/license-keys/list
-    type: APIReference
-  - url: openapi/polar-sh-openapi.yml
-    type: OpenAPI
-  - url: collections/polar-sh.postman_collection.json
-    type: PostmanCollection
-  - url: collections/polar-sh.opencollection.json
-    type: OpenCollection
-  description: Define benefits (entitlements such as license keys, file downloads,
-    Discord/GitHub access) attached to products, track benefit grants, and issue,
-    validate, activate, and deactivate license keys.
-- aid: polar-sh:meters-events
-  name: Polar Meters & Events API
+  - type: OpenAPI
+    url: openapi/polar-sh-events-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-license-keys-api
+  name: Polar license_keys API
+  description: License key issuance, validation, and activation.
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
   tags:
-  - Meters
-  - Events
-  - Usage Based Billing
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://polar.sh/docs/api-reference/meters
-  baseURL: https://api.polar.sh/v1
+  - license_keys
   properties:
-  - url: https://polar.sh/docs/features/usage-based-billing/introduction
-    type: Documentation
-  - url: https://polar.sh/docs/api-reference/events/ingest
-    type: APIReference
-  - url: openapi/polar-sh-openapi.yml
-    type: OpenAPI
-  - url: collections/polar-sh.postman_collection.json
-    type: PostmanCollection
-  - url: collections/polar-sh.opencollection.json
-    type: OpenCollection
-  description: Ingest usage events and define meters that aggregate those events into
-    billable quantities for usage-based (metered) prices, with per-customer meter
-    balances.
-- aid: polar-sh:webhooks
-  name: Polar Webhooks API
+  - type: OpenAPI
+    url: openapi/polar-sh-license-keys-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-meters-api
+  name: Polar meters API
+  description: Usage meters aggregating ingested events.
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
   tags:
-  - Webhooks
-  - Events
-  - Deliveries
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://polar.sh/docs/api-reference/webhooks
-  baseURL: https://api.polar.sh/v1
+  - meters
   properties:
-  - url: https://polar.sh/docs/integrate/webhooks/endpoints
-    type: Documentation
-  - url: https://polar.sh/docs/api-reference/webhooks/create
-    type: APIReference
-  - url: openapi/polar-sh-openapi.yml
-    type: OpenAPI
-  - url: collections/polar-sh.postman_collection.json
-    type: PostmanCollection
-  - url: collections/polar-sh.opencollection.json
-    type: OpenCollection
-  description: Register and manage webhook endpoints, rotate signing secrets, and
-    inspect or redeliver webhook deliveries for order, subscription, benefit, and
-    checkout lifecycle events.
+  - type: OpenAPI
+    url: openapi/polar-sh-meters-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-orders-api
+  name: Polar orders API
+  description: Orders, invoices, and receipts.
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
+  tags:
+  - orders
+  properties:
+  - type: OpenAPI
+    url: openapi/polar-sh-orders-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-products-api
+  name: Polar products API
+  description: Product catalog and embedded pricing.
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
+  tags:
+  - products
+  properties:
+  - type: OpenAPI
+    url: openapi/polar-sh-products-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-subscriptions-api
+  name: Polar subscriptions API
+  description: Recurring subscriptions.
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
+  tags:
+  - subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/polar-sh-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
+- aid: polar-sh:polar-sh-webhooks-api
+  name: Polar webhooks API
+  description: Webhook endpoint management and deliveries.
+  humanURL: https://polar.sh/docs/api-reference/products
+  baseURL: https://api.polar.sh/v1
+  tags:
+  - webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/polar-sh-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://polar.sh/docs/features/products
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/products/list
+  - type: PostmanCollection
+    url: collections/polar-sh.postman_collection.json
+  - type: OpenCollection
+    url: collections/polar-sh.opencollection.json
+  - type: Documentation
+    url: https://polar.sh/docs/features/checkout/session
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/checkouts/create-session
+  - type: Documentation
+    url: https://polar.sh/docs/features/customer-management
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/customers/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/subscriptions
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/subscriptions/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/orders
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/orders/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/benefits
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/license-keys/list
+  - type: Documentation
+    url: https://polar.sh/docs/features/usage-based-billing/introduction
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/events/ingest
+  - type: Documentation
+    url: https://polar.sh/docs/integrate/webhooks/endpoints
+  - type: APIReference
+    url: https://polar.sh/docs/api-reference/webhooks/create
 common:
 - type: AgenticAccess
   url: agentic-access/polar-sh-agentic-access.yml
