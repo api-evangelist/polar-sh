@@ -1,0 +1,34 @@
+{
+  "provider": "polar-sh",
+  "sources": [
+    "polar-sh-benefits-api-openapi.yml",
+    "polar-sh-checkouts-api-openapi.yml",
+    "polar-sh-customer-portal-api-openapi.yml",
+    "polar-sh-customers-api-openapi.yml",
+    "polar-sh-events-api-openapi.yml",
+    "polar-sh-license-keys-api-openapi.yml",
+    "polar-sh-meters-api-openapi.yml",
+    "polar-sh-orders-api-openapi.yml",
+    "polar-sh-products-api-openapi.yml",
+    "polar-sh-subscriptions-api-openapi.yml",
+    "polar-sh-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "polar-sh-benefits-api-openapi.yml",
+    "polar-sh-checkouts-api-openapi.yml",
+    "polar-sh-customer-portal-api-openapi.yml",
+    "polar-sh-customers-api-openapi.yml",
+    "polar-sh-events-api-openapi.yml",
+    "polar-sh-license-keys-api-openapi.yml",
+    "polar-sh-meters-api-openapi.yml",
+    "polar-sh-orders-api-openapi.yml",
+    "polar-sh-products-api-openapi.yml",
+    "polar-sh-subscriptions-api-openapi.yml",
+    "polar-sh-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
