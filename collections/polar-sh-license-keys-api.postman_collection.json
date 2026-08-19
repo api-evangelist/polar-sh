@@ -1,0 +1,518 @@
+{
+  "item": [
+    {
+      "id": "a5ac7a81-6477-4e06-a27c-a158426ae0ab",
+      "name": "license_keys",
+      "description": {
+        "content": "License key issuance, validation, and activation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2d3a41e-f0ed-4c64-9bae-0579d7b0db81",
+          "name": "List License Keys",
+          "request": {
+            "name": "List License Keys",
+            "description": {},
+            "url": {
+              "path": [
+                "license-keys",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47fda6fd-db94-4db8-b42c-05432d4ccb25",
+              "name": "A paginated list of license keys.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "license-keys",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"db33e257-601b-08f7-6157-b0dc84f587e0\",\n      \"key\": \"string\",\n      \"status\": \"revoked\",\n      \"organization_id\": \"27de4f17-22b8-3bfd-bdf5-dda8274e6a59\",\n      \"customer_id\": \"cef15af6-417c-fc94-b158-17b7fe2d18a1\",\n      \"benefit_id\": \"804da2b3-23b3-f7b9-0d5c-5138a5215532\",\n      \"usage\": 7929,\n      \"limit_usage\": 5349,\n      \"expires_at\": \"2020-07-23T20:03:22.572Z\"\n    },\n    {\n      \"id\": \"03f8aff2-0ed6-2b03-1293-90921db721fd\",\n      \"key\": \"string\",\n      \"status\": \"granted\",\n      \"organization_id\": \"6425dcb7-8c20-c165-096c-0b057786bc4e\",\n      \"customer_id\": \"fbb3b857-650f-71be-9647-f49b97be0b52\",\n      \"benefit_id\": \"534904db-720c-f590-742d-3eb921a9b720\",\n      \"usage\": 8848,\n      \"limit_usage\": 1300,\n      \"expires_at\": \"1990-02-05T19:30:03.902Z\"\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 6311,\n    \"max_page\": 1147\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "280e5e2d-17e1-45c3-a01e-7d0d6677fd8a",
+          "name": "Get License Key",
+          "request": {
+            "name": "Get License Key",
+            "description": {},
+            "url": {
+              "path": [
+                "license-keys",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed68fae2-2185-4baa-b765-4424a6112a41",
+              "name": "The requested license key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "license-keys",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e50f2759-6945-005f-315d-e076199b8d5c\",\n  \"key\": \"string\",\n  \"status\": \"disabled\",\n  \"organization_id\": \"9c3665b4-4c9a-d6af-6322-4f675bdbe462\",\n  \"customer_id\": \"739742ee-c2c4-7807-0d16-dd52865f63a3\",\n  \"benefit_id\": \"d2d478ad-394b-1be0-e64e-90df8a0ac88c\",\n  \"usage\": 3184,\n  \"limit_usage\": 1411,\n  \"expires_at\": \"2019-06-22T11:02:07.834Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "884613ca-840e-4ee9-9b51-d5327dee4680",
+          "name": "Validate License Key",
+          "request": {
+            "name": "Validate License Key",
+            "description": {},
+            "url": {
+              "path": [
+                "license-keys",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"organization_id\": \"<uuid>\",\n  \"benefit_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4dee7b47-e9d0-4e80-8470-8ff0ca444739",
+              "name": "The validation result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "license-keys",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"organization_id\": \"<uuid>\",\n  \"benefit_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e50f2759-6945-005f-315d-e076199b8d5c\",\n  \"key\": \"string\",\n  \"status\": \"disabled\",\n  \"organization_id\": \"9c3665b4-4c9a-d6af-6322-4f675bdbe462\",\n  \"customer_id\": \"739742ee-c2c4-7807-0d16-dd52865f63a3\",\n  \"benefit_id\": \"d2d478ad-394b-1be0-e64e-90df8a0ac88c\",\n  \"usage\": 3184,\n  \"limit_usage\": 1411,\n  \"expires_at\": \"2019-06-22T11:02:07.834Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47bcf3df-e17c-4483-a52e-68185ab41d6c",
+          "name": "Activate License Key",
+          "request": {
+            "name": "Activate License Key",
+            "description": {},
+            "url": {
+              "path": [
+                "license-keys",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"organization_id\": \"<uuid>\",\n  \"label\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d9b773a-4a62-4c83-9ce4-9bf6e201c53e",
+              "name": "The activation record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "license-keys",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"organization_id\": \"<uuid>\",\n  \"label\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "676836ac-38a5-4115-b9e2-7596cf9583c0",
+          "name": "Validate License Key (Customer Portal)",
+          "request": {
+            "name": "Validate License Key (Customer Portal)",
+            "description": {
+              "content": "Customer-facing license key validation using a Customer Session token rather than an Organization Access Token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer-portal",
+                "license-keys",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"organization_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "56d48a4e-5011-439b-9fb2-8fd00f2c6620",
+              "name": "The validation result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer-portal",
+                    "license-keys",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"organization_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e50f2759-6945-005f-315d-e076199b8d5c\",\n  \"key\": \"string\",\n  \"status\": \"disabled\",\n  \"organization_id\": \"9c3665b4-4c9a-d6af-6322-4f675bdbe462\",\n  \"customer_id\": \"739742ee-c2c4-7807-0d16-dd52865f63a3\",\n  \"benefit_id\": \"d2d478ad-394b-1be0-e64e-90df8a0ac88c\",\n  \"usage\": 3184,\n  \"limit_usage\": 1411,\n  \"expires_at\": \"2019-06-22T11:02:07.834Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.polar.sh/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3f3b1c29-9131-4ac5-9b4f-37f66c7cb507",
+    "name": "Polar benefits license_keys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.\n\nContact Support:\n Name: Polar Support\n Email: support@polar.sh",
+      "type": "text/plain"
+    }
+  }
+}

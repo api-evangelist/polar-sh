@@ -1,0 +1,490 @@
+{
+  "item": [
+    {
+      "id": "281cf291-ad26-4362-90c2-7a5f2d32c0bc",
+      "name": "customers",
+      "description": {
+        "content": "Customers, external IDs, and aggregated customer state.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ea05f7e1-de3e-49e4-903f-0844be866d91",
+          "name": "List Customers",
+          "request": {
+            "name": "List Customers",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca054c5f-ec05-458f-97cd-7a53fbf5597e",
+              "name": "A paginated list of customers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"4d00c989-8a7a-7f7a-2dfe-8f7d5012aa7e\",\n      \"created_at\": \"1971-07-26T18:05:48.305Z\",\n      \"email\": \"string\",\n      \"name\": \"string\",\n      \"external_id\": \"string\",\n      \"organization_id\": \"c80e2780-ce4e-3c99-bda5-fad2f20e657f\",\n      \"metadata\": {\n        \"key_0\": 8833\n      }\n    },\n    {\n      \"id\": \"ae927a23-1e30-ad8d-46ff-6d47427d1e39\",\n      \"created_at\": \"1984-10-28T09:49:38.554Z\",\n      \"email\": \"string\",\n      \"name\": \"string\",\n      \"external_id\": \"string\",\n      \"organization_id\": \"4f944172-e1ba-89f0-f907-9d1017f4df21\",\n      \"metadata\": {\n        \"key_0\": 160\n      }\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 3731,\n    \"max_page\": 9006\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "418f30be-c8f7-4f09-b467-e4848e15192f",
+          "name": "Create Customer",
+          "request": {
+            "name": "Create Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1bb9e1d2-dbca-46dd-b9e9-7c148845dcd9",
+              "name": "The created customer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 7795.345615247059\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cb2fd477-0ef9-f6d4-9618-d55cd9dde877\",\n  \"created_at\": \"2015-04-28T15:33:04.052Z\",\n  \"email\": \"string\",\n  \"name\": \"string\",\n  \"external_id\": \"string\",\n  \"organization_id\": \"eaeab649-3335-63e8-6cec-bc1b53fa8708\",\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": true,\n    \"key_2\": \"string\",\n    \"key_3\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84db1397-a369-4e64-8c8b-d24967a01fcb",
+          "name": "Get Customer",
+          "request": {
+            "name": "Get Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4ed72ea-9bf2-45d2-80d0-9ee324fcb360",
+              "name": "The requested customer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cb2fd477-0ef9-f6d4-9618-d55cd9dde877\",\n  \"created_at\": \"2015-04-28T15:33:04.052Z\",\n  \"email\": \"string\",\n  \"name\": \"string\",\n  \"external_id\": \"string\",\n  \"organization_id\": \"eaeab649-3335-63e8-6cec-bc1b53fa8708\",\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": true,\n    \"key_2\": \"string\",\n    \"key_3\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "977627dd-72f6-4243-b15c-67973ba6b142",
+          "name": "Delete Customer",
+          "request": {
+            "name": "Delete Customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c024191f-b906-4c03-a86a-0b8806a94b2a",
+              "name": "The customer was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0d9daee-7737-4093-a2d7-dfac5d43cff0",
+          "name": "Get Customer State",
+          "request": {
+            "name": "Get Customer State",
+            "description": {
+              "content": "Returns the aggregated state of a customer - active subscriptions, granted benefits, and active meters - in a single response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":id",
+                "state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "789f3c60-d79a-415e-88b1-7c3ce878e0e6",
+              "name": "The aggregated customer state.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": true,\n  \"key_1\": false,\n  \"key_2\": \"string\",\n  \"key_3\": false,\n  \"key_4\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.polar.sh/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dca3fd66-9ff4-46c5-bed1-f5d0c8a3f554",
+    "name": "Polar benefits customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.\n\nContact Support:\n Name: Polar Support\n Email: support@polar.sh",
+      "type": "text/plain"
+    }
+  }
+}

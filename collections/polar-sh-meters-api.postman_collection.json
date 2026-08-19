@@ -1,0 +1,309 @@
+{
+  "item": [
+    {
+      "id": "4c567712-e15d-47f6-a087-7ee043b17cf9",
+      "name": "meters",
+      "description": {
+        "content": "Usage meters aggregating ingested events.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8564531-653c-4e02-9ee2-e7dc690b4ae3",
+          "name": "List Meters",
+          "request": {
+            "name": "List Meters",
+            "description": {},
+            "url": {
+              "path": [
+                "meters",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5fb1d78-1ac1-41ad-9df7-2c05b27b918a",
+              "name": "A paginated list of meters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"6379db07-5e20-9156-25b2-a2b6d8961351\",\n      \"created_at\": \"1963-01-16T16:14:59.347Z\",\n      \"name\": \"string\",\n      \"aggregation\": {\n        \"key_0\": \"string\",\n        \"key_1\": 2719,\n        \"key_2\": 8651.036378172956\n      },\n      \"filter\": {\n        \"key_0\": true,\n        \"key_1\": 4438,\n        \"key_2\": \"string\",\n        \"key_3\": false,\n        \"key_4\": 1866.1997149247522\n      },\n      \"organization_id\": \"b4f69a46-52b0-8fae-f646-c0e94c1484e3\"\n    },\n    {\n      \"id\": \"ea134e7c-52bc-9698-76c2-0c870002353c\",\n      \"created_at\": \"1986-11-30T16:13:56.442Z\",\n      \"name\": \"string\",\n      \"aggregation\": {\n        \"key_0\": false\n      },\n      \"filter\": {\n        \"key_0\": 7981.305875820456\n      },\n      \"organization_id\": \"752626eb-adbe-5087-f4af-9cdb69181405\"\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 938,\n    \"max_page\": 7765\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "903099b2-e296-4f12-bd2f-71ca956fae29",
+          "name": "Create Meter",
+          "request": {
+            "name": "Create Meter",
+            "description": {},
+            "url": {
+              "path": [
+                "meters",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": {\n    \"key_0\": 1216.6791224356111\n  },\n  \"aggregation\": {\n    \"key_0\": false,\n    \"key_1\": 4630.70295388121,\n    \"key_2\": false,\n    \"key_3\": true\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f469922-34a5-4fa4-bbaf-64646a76c83d",
+              "name": "The created meter.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filter\": {\n    \"key_0\": 3141,\n    \"key_1\": false,\n    \"key_2\": 3502.88833767021\n  },\n  \"aggregation\": {\n    \"key_0\": 3205.10555593843,\n    \"key_1\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6c6c47c5-c542-ba35-faa9-efe8c8c4cbdb\",\n  \"created_at\": \"1984-03-26T06:51:33.753Z\",\n  \"name\": \"string\",\n  \"aggregation\": {\n    \"key_0\": 4705\n  },\n  \"filter\": {\n    \"key_0\": 6157\n  },\n  \"organization_id\": \"ae6bac42-ff0b-64ba-d5b2-336a928b91a4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "516d2ad3-495d-43bb-a583-bcad8b769fbf",
+          "name": "Get Meter",
+          "request": {
+            "name": "Get Meter",
+            "description": {},
+            "url": {
+              "path": [
+                "meters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f9c9fe5-336b-49f5-aa76-02ffc2f3f1ed",
+              "name": "The requested meter.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"6c6c47c5-c542-ba35-faa9-efe8c8c4cbdb\",\n  \"created_at\": \"1984-03-26T06:51:33.753Z\",\n  \"name\": \"string\",\n  \"aggregation\": {\n    \"key_0\": 4705\n  },\n  \"filter\": {\n    \"key_0\": 6157\n  },\n  \"organization_id\": \"ae6bac42-ff0b-64ba-d5b2-336a928b91a4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.polar.sh/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "55af7427-825a-4b79-ab33-c84a4128a212",
+    "name": "Polar benefits meters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.\n\nContact Support:\n Name: Polar Support\n Email: support@polar.sh",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polar benefits events API",
+    "version": "2026-04"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/events/"
+          },
+          "docs": "List Events"
+        },
+        {
+          "info": {
+            "name": "Ingest Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/events/ingest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ingest a batch of usage events. Events are later aggregated by meters into billable quantities for usage-based (metered) prices."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

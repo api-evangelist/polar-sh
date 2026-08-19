@@ -1,0 +1,577 @@
+{
+  "item": [
+    {
+      "id": "182d6c68-4d5f-4d87-b50c-137513a2efe2",
+      "name": "products",
+      "description": {
+        "content": "Product catalog and embedded pricing.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b838116a-ca09-4a38-9121-1d6b0dddbafe",
+          "name": "List Products",
+          "request": {
+            "name": "List Products",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_archived",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99b99212-9eaf-4db3-af76-f8d959427ef3",
+              "name": "A paginated list of products.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "is_archived",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"f11c1d0b-cca3-6f67-b888-a83b5bdb4474\",\n      \"created_at\": \"1988-09-24T12:52:30.110Z\",\n      \"modified_at\": \"1951-04-03T05:09:31.580Z\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"recurring_interval\": \"year\",\n      \"is_recurring\": false,\n      \"is_archived\": true,\n      \"organization_id\": \"044c326a-50eb-078a-bc51-2c2a52b39776\",\n      \"prices\": [\n        {\n          \"id\": \"d7d522bd-5d5c-0ae0-4579-07ba4f4c0039\",\n          \"amount_type\": \"custom\",\n          \"price_amount\": 9732,\n          \"price_currency\": \"usd\",\n          \"recurring_interval\": \"year\"\n        },\n        {\n          \"id\": \"cbb2881b-9dc4-585d-9d29-573a1f9187df\",\n          \"amount_type\": \"metered_unit\",\n          \"price_amount\": 2661,\n          \"price_currency\": \"usd\",\n          \"recurring_interval\": \"month\"\n        }\n      ],\n      \"benefits\": [\n        {\n          \"id\": \"219e56fa-21db-fd9b-3ca9-913b5dcbaf4f\",\n          \"created_at\": \"1985-08-19T01:54:46.007Z\",\n          \"type\": \"custom\",\n          \"description\": \"string\",\n          \"selectable\": false,\n          \"deletable\": true,\n          \"organization_id\": \"794016f6-6e3b-5357-1631-e5e1075e39df\",\n          \"properties\": {\n            \"key_0\": 2120.8046520579114,\n            \"key_1\": 7541.960655992423\n          }\n        },\n        {\n          \"id\": \"9e97695f-7efa-2506-7013-01d83fa1cd5d\",\n          \"created_at\": \"1996-01-15T04:32:15.149Z\",\n          \"type\": \"meter_credit\",\n          \"description\": \"string\",\n          \"selectable\": false,\n          \"deletable\": false,\n          \"organization_id\": \"72ee8467-5d27-3288-9ac8-6439118fb8dd\",\n          \"properties\": {\n            \"key_0\": 7902.618146365684\n          }\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": true\n      }\n    },\n    {\n      \"id\": \"b529b20f-0a81-ac89-757b-09cbfb798472\",\n      \"created_at\": \"2002-03-26T11:02:08.339Z\",\n      \"modified_at\": \"2012-08-28T12:31:18.517Z\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"recurring_interval\": \"month\",\n      \"is_recurring\": false,\n      \"is_archived\": true,\n      \"organization_id\": \"2bacb414-f3ea-8a12-1175-712443aa1f19\",\n      \"prices\": [\n        {\n          \"id\": \"d0cd0cab-93ab-a815-4f28-424ba4fc87ad\",\n          \"amount_type\": \"fixed\",\n          \"price_amount\": 4249,\n          \"price_currency\": \"usd\",\n          \"recurring_interval\": \"year\"\n        },\n        {\n          \"id\": \"54f05ffd-e579-0520-ab0d-bf1e7f246ec6\",\n          \"amount_type\": \"custom\",\n          \"price_amount\": 3287,\n          \"price_currency\": \"usd\",\n          \"recurring_interval\": \"month\"\n        }\n      ],\n      \"benefits\": [\n        {\n          \"id\": \"99d2ec89-5c90-8806-2815-0067fed94430\",\n          \"created_at\": \"1977-02-03T14:47:58.143Z\",\n          \"type\": \"custom\",\n          \"description\": \"string\",\n          \"selectable\": false,\n          \"deletable\": false,\n          \"organization_id\": \"74e1f9e4-1974-85c9-0310-f95b10bd7da4\",\n          \"properties\": {\n            \"key_0\": false\n          }\n        },\n        {\n          \"id\": \"07865a76-1713-e697-b9ba-b8563219feca\",\n          \"created_at\": \"2019-05-21T07:10:45.845Z\",\n          \"type\": \"custom\",\n          \"description\": \"string\",\n          \"selectable\": false,\n          \"deletable\": true,\n          \"organization_id\": \"1d0e1130-3241-dbc4-9271-972cb62c4b59\",\n          \"properties\": {\n            \"key_0\": 2892,\n            \"key_1\": 1208.801149900297\n          }\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": 7338\n      }\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 1220,\n    \"max_page\": 9998\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e0c4acc-74bd-4588-a15e-8849acf5fd4c",
+          "name": "Create Product",
+          "request": {
+            "name": "Create Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"prices\": [\n    {\n      \"amount_type\": \"<string>\",\n      \"price_amount\": \"<integer>\",\n      \"price_currency\": \"usd\",\n      \"meter_id\": \"<uuid>\",\n      \"unit_amount\": \"<string>\"\n    },\n    {\n      \"amount_type\": \"<string>\",\n      \"price_amount\": \"<integer>\",\n      \"price_currency\": \"usd\",\n      \"meter_id\": \"<uuid>\",\n      \"unit_amount\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"recurring_interval\": \"<string>\",\n  \"organization_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ac51ebf-73a4-4d0f-802a-bfe4ba009d55",
+              "name": "The created product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"prices\": [\n    {\n      \"amount_type\": \"<string>\",\n      \"price_amount\": \"<integer>\",\n      \"price_currency\": \"usd\",\n      \"meter_id\": \"<uuid>\",\n      \"unit_amount\": \"<string>\"\n    },\n    {\n      \"amount_type\": \"<string>\",\n      \"price_amount\": \"<integer>\",\n      \"price_currency\": \"usd\",\n      \"meter_id\": \"<uuid>\",\n      \"unit_amount\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"recurring_interval\": \"<string>\",\n  \"organization_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"0c0a06d5-6b36-d99a-ca5b-8abc178dad93\",\n  \"created_at\": \"1999-10-26T12:56:17.264Z\",\n  \"modified_at\": \"1986-07-21T04:09:25.823Z\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"recurring_interval\": null,\n  \"is_recurring\": true,\n  \"is_archived\": true,\n  \"organization_id\": \"5256c74a-fcbd-6150-682f-79b2e4da8a94\",\n  \"prices\": [\n    {\n      \"id\": \"a1ebbee8-28bd-46f4-3622-2c071da8a4b1\",\n      \"amount_type\": \"fixed\",\n      \"price_amount\": 7181,\n      \"price_currency\": \"usd\",\n      \"recurring_interval\": null\n    },\n    {\n      \"id\": \"cc3ec97c-6e51-a5e2-6fde-12a85f3e3ba9\",\n      \"amount_type\": \"custom\",\n      \"price_amount\": 6935,\n      \"price_currency\": \"usd\",\n      \"recurring_interval\": null\n    }\n  ],\n  \"benefits\": [\n    {\n      \"id\": \"167297ea-1f49-c2ea-6250-d4af8adacc3b\",\n      \"created_at\": \"1958-05-03T22:35:28.020Z\",\n      \"type\": \"discord\",\n      \"description\": \"string\",\n      \"selectable\": false,\n      \"deletable\": true,\n      \"organization_id\": \"f6dc2399-5e7c-2374-7345-a2cc8c20a031\",\n      \"properties\": {\n        \"key_0\": false,\n        \"key_1\": 3189,\n        \"key_2\": \"string\",\n        \"key_3\": true\n      }\n    },\n    {\n      \"id\": \"e12c6b88-be67-5115-57fc-77d149c34f69\",\n      \"created_at\": \"2000-09-27T20:57:31.570Z\",\n      \"type\": \"custom\",\n      \"description\": \"string\",\n      \"selectable\": false,\n      \"deletable\": true,\n      \"organization_id\": \"f516cb5a-5657-1618-7237-ddc7df4a5722\",\n      \"properties\": {\n        \"key_0\": true\n      }\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": 9362\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42fdc03b-681b-47d4-bbdd-d47dfb705008",
+          "name": "Get Product",
+          "request": {
+            "name": "Get Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a49254e-af10-4647-a033-863da451dfcf",
+              "name": "The requested product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"0c0a06d5-6b36-d99a-ca5b-8abc178dad93\",\n  \"created_at\": \"1999-10-26T12:56:17.264Z\",\n  \"modified_at\": \"1986-07-21T04:09:25.823Z\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"recurring_interval\": null,\n  \"is_recurring\": true,\n  \"is_archived\": true,\n  \"organization_id\": \"5256c74a-fcbd-6150-682f-79b2e4da8a94\",\n  \"prices\": [\n    {\n      \"id\": \"a1ebbee8-28bd-46f4-3622-2c071da8a4b1\",\n      \"amount_type\": \"fixed\",\n      \"price_amount\": 7181,\n      \"price_currency\": \"usd\",\n      \"recurring_interval\": null\n    },\n    {\n      \"id\": \"cc3ec97c-6e51-a5e2-6fde-12a85f3e3ba9\",\n      \"amount_type\": \"custom\",\n      \"price_amount\": 6935,\n      \"price_currency\": \"usd\",\n      \"recurring_interval\": null\n    }\n  ],\n  \"benefits\": [\n    {\n      \"id\": \"167297ea-1f49-c2ea-6250-d4af8adacc3b\",\n      \"created_at\": \"1958-05-03T22:35:28.020Z\",\n      \"type\": \"discord\",\n      \"description\": \"string\",\n      \"selectable\": false,\n      \"deletable\": true,\n      \"organization_id\": \"f6dc2399-5e7c-2374-7345-a2cc8c20a031\",\n      \"properties\": {\n        \"key_0\": false,\n        \"key_1\": 3189,\n        \"key_2\": \"string\",\n        \"key_3\": true\n      }\n    },\n    {\n      \"id\": \"e12c6b88-be67-5115-57fc-77d149c34f69\",\n      \"created_at\": \"2000-09-27T20:57:31.570Z\",\n      \"type\": \"custom\",\n      \"description\": \"string\",\n      \"selectable\": false,\n      \"deletable\": true,\n      \"organization_id\": \"f516cb5a-5657-1618-7237-ddc7df4a5722\",\n      \"properties\": {\n        \"key_0\": true\n      }\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": 9362\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba0ff9e1-ce08-43a0-a487-05e915755f83",
+          "name": "Update Product",
+          "request": {
+            "name": "Update Product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_archived\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ca23a6a-145a-4397-b0e9-d24997383ccb",
+              "name": "The updated product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_archived\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"0c0a06d5-6b36-d99a-ca5b-8abc178dad93\",\n  \"created_at\": \"1999-10-26T12:56:17.264Z\",\n  \"modified_at\": \"1986-07-21T04:09:25.823Z\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"recurring_interval\": null,\n  \"is_recurring\": true,\n  \"is_archived\": true,\n  \"organization_id\": \"5256c74a-fcbd-6150-682f-79b2e4da8a94\",\n  \"prices\": [\n    {\n      \"id\": \"a1ebbee8-28bd-46f4-3622-2c071da8a4b1\",\n      \"amount_type\": \"fixed\",\n      \"price_amount\": 7181,\n      \"price_currency\": \"usd\",\n      \"recurring_interval\": null\n    },\n    {\n      \"id\": \"cc3ec97c-6e51-a5e2-6fde-12a85f3e3ba9\",\n      \"amount_type\": \"custom\",\n      \"price_amount\": 6935,\n      \"price_currency\": \"usd\",\n      \"recurring_interval\": null\n    }\n  ],\n  \"benefits\": [\n    {\n      \"id\": \"167297ea-1f49-c2ea-6250-d4af8adacc3b\",\n      \"created_at\": \"1958-05-03T22:35:28.020Z\",\n      \"type\": \"discord\",\n      \"description\": \"string\",\n      \"selectable\": false,\n      \"deletable\": true,\n      \"organization_id\": \"f6dc2399-5e7c-2374-7345-a2cc8c20a031\",\n      \"properties\": {\n        \"key_0\": false,\n        \"key_1\": 3189,\n        \"key_2\": \"string\",\n        \"key_3\": true\n      }\n    },\n    {\n      \"id\": \"e12c6b88-be67-5115-57fc-77d149c34f69\",\n      \"created_at\": \"2000-09-27T20:57:31.570Z\",\n      \"type\": \"custom\",\n      \"description\": \"string\",\n      \"selectable\": false,\n      \"deletable\": true,\n      \"organization_id\": \"f516cb5a-5657-1618-7237-ddc7df4a5722\",\n      \"properties\": {\n        \"key_0\": true\n      }\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": 9362\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8138487c-9bcd-4aa3-8fac-6dc66e1c77ea",
+          "name": "Update Product Benefits",
+          "request": {
+            "name": "Update Product Benefits",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":id",
+                "benefits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"benefits\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6a7e79e-7656-4122-8615-f26ba7b1d969",
+              "name": "The updated product with attached benefits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id",
+                    "benefits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"benefits\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"0c0a06d5-6b36-d99a-ca5b-8abc178dad93\",\n  \"created_at\": \"1999-10-26T12:56:17.264Z\",\n  \"modified_at\": \"1986-07-21T04:09:25.823Z\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"recurring_interval\": null,\n  \"is_recurring\": true,\n  \"is_archived\": true,\n  \"organization_id\": \"5256c74a-fcbd-6150-682f-79b2e4da8a94\",\n  \"prices\": [\n    {\n      \"id\": \"a1ebbee8-28bd-46f4-3622-2c071da8a4b1\",\n      \"amount_type\": \"fixed\",\n      \"price_amount\": 7181,\n      \"price_currency\": \"usd\",\n      \"recurring_interval\": null\n    },\n    {\n      \"id\": \"cc3ec97c-6e51-a5e2-6fde-12a85f3e3ba9\",\n      \"amount_type\": \"custom\",\n      \"price_amount\": 6935,\n      \"price_currency\": \"usd\",\n      \"recurring_interval\": null\n    }\n  ],\n  \"benefits\": [\n    {\n      \"id\": \"167297ea-1f49-c2ea-6250-d4af8adacc3b\",\n      \"created_at\": \"1958-05-03T22:35:28.020Z\",\n      \"type\": \"discord\",\n      \"description\": \"string\",\n      \"selectable\": false,\n      \"deletable\": true,\n      \"organization_id\": \"f6dc2399-5e7c-2374-7345-a2cc8c20a031\",\n      \"properties\": {\n        \"key_0\": false,\n        \"key_1\": 3189,\n        \"key_2\": \"string\",\n        \"key_3\": true\n      }\n    },\n    {\n      \"id\": \"e12c6b88-be67-5115-57fc-77d149c34f69\",\n      \"created_at\": \"2000-09-27T20:57:31.570Z\",\n      \"type\": \"custom\",\n      \"description\": \"string\",\n      \"selectable\": false,\n      \"deletable\": true,\n      \"organization_id\": \"f516cb5a-5657-1618-7237-ddc7df4a5722\",\n      \"properties\": {\n        \"key_0\": true\n      }\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": 9362\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.polar.sh/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "502f6085-bcc1-4de0-baf2-40d797b916a9",
+    "name": "Polar benefits products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.\n\nContact Support:\n Name: Polar Support\n Email: support@polar.sh",
+      "type": "text/plain"
+    }
+  }
+}

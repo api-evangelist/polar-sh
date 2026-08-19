@@ -1,0 +1,484 @@
+{
+  "item": [
+    {
+      "id": "9925f353-9824-4878-b37d-e8b3effc5b31",
+      "name": "checkouts",
+      "description": {
+        "content": "Hosted checkout sessions and reusable checkout links.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6aabd1a9-4a02-4ff2-bc6a-8f5bc2bcfdf1",
+          "name": "List Checkout Sessions",
+          "request": {
+            "name": "List Checkout Sessions",
+            "description": {},
+            "url": {
+              "path": [
+                "checkouts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee9a152e-1a0c-4dd0-962a-bab9c06aa95a",
+              "name": "A paginated list of checkout sessions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkouts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"5b979b0f-0141-927a-bdac-9f021334b905\",\n      \"status\": \"succeeded\",\n      \"client_secret\": \"string\",\n      \"url\": \"string\",\n      \"expires_at\": \"1962-01-10T02:36:34.419Z\",\n      \"product_id\": \"fda49e55-274e-dd53-2c4e-2f1822d8eae8\",\n      \"amount\": 841,\n      \"currency\": \"string\",\n      \"customer_email\": \"string\",\n      \"success_url\": \"string\"\n    },\n    {\n      \"id\": \"6a834ffb-8846-d855-a15d-9bd047db0a3b\",\n      \"status\": \"failed\",\n      \"client_secret\": \"string\",\n      \"url\": \"string\",\n      \"expires_at\": \"1958-06-14T00:50:20.230Z\",\n      \"product_id\": \"6935e3ca-91f5-686d-a3ab-6c7a266642ef\",\n      \"amount\": 7768,\n      \"currency\": \"string\",\n      \"customer_email\": \"string\",\n      \"success_url\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 4494,\n    \"max_page\": 7817\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78fbc34e-2fc8-4134-9b5a-11b3413fa02a",
+          "name": "Create Checkout Session",
+          "request": {
+            "name": "Create Checkout Session",
+            "description": {},
+            "url": {
+              "path": [
+                "checkouts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"products\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"customer_email\": \"<string>\",\n  \"customer_external_id\": \"<string>\",\n  \"success_url\": \"<string>\",\n  \"discount_id\": \"<uuid>\",\n  \"metadata\": {\n    \"key_0\": 8756.267875282216,\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef4c226a-9e22-47a1-a538-5c40bccc8f10",
+              "name": "The created checkout session.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkouts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"products\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"customer_email\": \"<string>\",\n  \"customer_external_id\": \"<string>\",\n  \"success_url\": \"<string>\",\n  \"discount_id\": \"<uuid>\",\n  \"metadata\": {\n    \"key_0\": 5288.640321632404\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f9944edd-ff29-64a6-69f9-670e0bb87cc6\",\n  \"status\": \"confirmed\",\n  \"client_secret\": \"string\",\n  \"url\": \"string\",\n  \"expires_at\": \"1986-06-19T09:26:19.145Z\",\n  \"product_id\": \"c7293843-13da-a561-e983-6e15bdd0bd0b\",\n  \"amount\": 7639,\n  \"currency\": \"string\",\n  \"customer_email\": \"string\",\n  \"success_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4198fe9-66b0-440a-9cd4-1b58fa674846",
+          "name": "Get Checkout Session",
+          "request": {
+            "name": "Get Checkout Session",
+            "description": {},
+            "url": {
+              "path": [
+                "checkouts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86129735-de54-4127-aefc-631d9b56f205",
+              "name": "The requested checkout session.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkouts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f9944edd-ff29-64a6-69f9-670e0bb87cc6\",\n  \"status\": \"confirmed\",\n  \"client_secret\": \"string\",\n  \"url\": \"string\",\n  \"expires_at\": \"1986-06-19T09:26:19.145Z\",\n  \"product_id\": \"c7293843-13da-a561-e983-6e15bdd0bd0b\",\n  \"amount\": 7639,\n  \"currency\": \"string\",\n  \"customer_email\": \"string\",\n  \"success_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "115ead90-46e2-45b7-815b-e2ebbadffc9a",
+          "name": "List Checkout Links",
+          "request": {
+            "name": "List Checkout Links",
+            "description": {},
+            "url": {
+              "path": [
+                "checkout-links",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ec3feec-c990-4202-b246-c1786c13b81b",
+              "name": "A paginated list of checkout links.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkout-links",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"ab0d4bea-dc19-f1db-3855-f517492df914\",\n      \"status\": \"expired\",\n      \"client_secret\": \"string\",\n      \"url\": \"string\",\n      \"expires_at\": \"1959-03-09T08:50:03.498Z\",\n      \"product_id\": \"ff1b6f29-7725-e876-67bd-ffcf4d39ef4e\",\n      \"amount\": 88,\n      \"currency\": \"string\",\n      \"customer_email\": \"string\",\n      \"success_url\": \"string\"\n    },\n    {\n      \"id\": \"48a9ba45-43e0-3602-194a-65e83f8191cb\",\n      \"status\": \"succeeded\",\n      \"client_secret\": \"string\",\n      \"url\": \"string\",\n      \"expires_at\": \"2013-07-05T15:56:07.139Z\",\n      \"product_id\": \"a8ca1815-e64d-4afd-ecbd-479c827f6b31\",\n      \"amount\": 2022,\n      \"currency\": \"string\",\n      \"customer_email\": \"string\",\n      \"success_url\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 8857,\n    \"max_page\": 9886\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d0a43ee-262d-4c35-9c0b-906eb1fc66ca",
+          "name": "Create Checkout Link",
+          "request": {
+            "name": "Create Checkout Link",
+            "description": {},
+            "url": {
+              "path": [
+                "checkout-links",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"products\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"success_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "23b98e1a-99f7-4747-ae2d-8b2bd73a677e",
+              "name": "The created checkout link.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkout-links",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"products\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"success_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2786.9545105514503,\n  \"key_1\": 5660,\n  \"key_2\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.polar.sh/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "41b27627-e68c-41b3-9ba0-bb4d3847ee22",
+    "name": "Polar benefits checkouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.\n\nContact Support:\n Name: Polar Support\n Email: support@polar.sh",
+      "type": "text/plain"
+    }
+  }
+}

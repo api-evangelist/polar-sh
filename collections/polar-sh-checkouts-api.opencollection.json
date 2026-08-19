@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polar benefits checkouts API",
+    "version": "2026-04"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "checkouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Checkout Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/checkouts/"
+          },
+          "docs": "List Checkout Sessions"
+        },
+        {
+          "info": {
+            "name": "Create Checkout Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/checkouts/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Checkout Session"
+        },
+        {
+          "info": {
+            "name": "Get Checkout Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/checkouts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Checkout Session"
+        },
+        {
+          "info": {
+            "name": "List Checkout Links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/checkout-links/"
+          },
+          "docs": "List Checkout Links"
+        },
+        {
+          "info": {
+            "name": "Create Checkout Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/checkout-links/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Checkout Link"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

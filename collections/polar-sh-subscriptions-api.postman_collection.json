@@ -1,0 +1,418 @@
+{
+  "item": [
+    {
+      "id": "bfcdd588-7456-4eca-8519-1047711ab07d",
+      "name": "subscriptions",
+      "description": {
+        "content": "Recurring subscriptions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "36f5b15e-65ae-4f4f-bfca-3ef8e0b71450",
+          "name": "List Subscriptions",
+          "request": {
+            "name": "List Subscriptions",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfb26079-aac5-4696-8bc8-2102c2f5ce75",
+              "name": "A paginated list of subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"a008c942-cb30-722d-b4f7-40a6e5d440e7\",\n      \"created_at\": \"2011-06-29T07:29:29.567Z\",\n      \"status\": \"canceled\",\n      \"current_period_start\": \"1998-11-28T08:32:52.299Z\",\n      \"current_period_end\": \"2024-03-31T01:27:15.251Z\",\n      \"cancel_at_period_end\": true,\n      \"product_id\": \"5f6794b4-e0ee-c176-120a-81e4d908387f\",\n      \"customer_id\": \"bcda3f99-2f47-7a51-3c64-85730b654aa7\",\n      \"recurring_interval\": \"year\",\n      \"amount\": 2292,\n      \"currency\": \"string\"\n    },\n    {\n      \"id\": \"257c9812-96cd-2631-b427-7d2f9ec29a50\",\n      \"created_at\": \"2019-08-05T22:02:39.316Z\",\n      \"status\": \"incomplete\",\n      \"current_period_start\": \"1980-10-06T08:16:35.005Z\",\n      \"current_period_end\": \"1998-01-14T11:54:56.657Z\",\n      \"cancel_at_period_end\": true,\n      \"product_id\": \"1337cd3d-f426-a44b-a390-3c876ffa96bc\",\n      \"customer_id\": \"b51d937e-8a7f-cb19-22f3-6ceb2aeb670d\",\n      \"recurring_interval\": \"year\",\n      \"amount\": 9996,\n      \"currency\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 2113,\n    \"max_page\": 451\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56c73bf2-4c94-473a-a894-51f59e058ccf",
+          "name": "Get Subscription",
+          "request": {
+            "name": "Get Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cf90918-1358-4120-957b-882709eb6cbc",
+              "name": "The requested subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"12b815cc-357a-6a89-1ebe-8b041aae0d5d\",\n  \"created_at\": \"1974-03-06T00:44:54.376Z\",\n  \"status\": \"incomplete\",\n  \"current_period_start\": \"2009-07-18T11:31:49.678Z\",\n  \"current_period_end\": \"2011-06-12T08:44:10.608Z\",\n  \"cancel_at_period_end\": true,\n  \"product_id\": \"2c5390e3-7c6d-7d36-1e32-a81fb4b54bed\",\n  \"customer_id\": \"b1017632-ce9c-14cb-ed29-761b8f88bbe2\",\n  \"recurring_interval\": \"month\",\n  \"amount\": 6795,\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "024e97c4-c5f1-4b8d-9d51-b1636150502c",
+          "name": "Update Subscription",
+          "request": {
+            "name": "Update Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ae7c70e-d5c2-4032-af0a-422e58986b37",
+              "name": "The updated subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": false,\n  \"key_1\": 3659.278715437002\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"12b815cc-357a-6a89-1ebe-8b041aae0d5d\",\n  \"created_at\": \"1974-03-06T00:44:54.376Z\",\n  \"status\": \"incomplete\",\n  \"current_period_start\": \"2009-07-18T11:31:49.678Z\",\n  \"current_period_end\": \"2011-06-12T08:44:10.608Z\",\n  \"cancel_at_period_end\": true,\n  \"product_id\": \"2c5390e3-7c6d-7d36-1e32-a81fb4b54bed\",\n  \"customer_id\": \"b1017632-ce9c-14cb-ed29-761b8f88bbe2\",\n  \"recurring_interval\": \"month\",\n  \"amount\": 6795,\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48fb7aa7-3b5f-4bc3-b11b-c952e3fa6b48",
+          "name": "Revoke Subscription",
+          "request": {
+            "name": "Revoke Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "118c7797-77b7-48db-a285-3f2a50102e7d",
+              "name": "The revoked subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"12b815cc-357a-6a89-1ebe-8b041aae0d5d\",\n  \"created_at\": \"1974-03-06T00:44:54.376Z\",\n  \"status\": \"incomplete\",\n  \"current_period_start\": \"2009-07-18T11:31:49.678Z\",\n  \"current_period_end\": \"2011-06-12T08:44:10.608Z\",\n  \"cancel_at_period_end\": true,\n  \"product_id\": \"2c5390e3-7c6d-7d36-1e32-a81fb4b54bed\",\n  \"customer_id\": \"b1017632-ce9c-14cb-ed29-761b8f88bbe2\",\n  \"recurring_interval\": \"month\",\n  \"amount\": 6795,\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.polar.sh/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ccf3c7fa-3f53-405b-9184-77b0a737f221",
+    "name": "Polar benefits subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.\n\nContact Support:\n Name: Polar Support\n Email: support@polar.sh",
+      "type": "text/plain"
+    }
+  }
+}

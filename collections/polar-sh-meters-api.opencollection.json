@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polar benefits meters API",
+    "version": "2026-04"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "meters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Meters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/meters/"
+          },
+          "docs": "List Meters"
+        },
+        {
+          "info": {
+            "name": "Create Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/meters/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Meter"
+        },
+        {
+          "info": {
+            "name": "Get Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/meters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Meter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

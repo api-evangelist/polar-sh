@@ -1,0 +1,396 @@
+{
+  "item": [
+    {
+      "id": "edd82534-9f11-48d1-b277-b660d2159f79",
+      "name": "webhooks",
+      "description": {
+        "content": "Webhook endpoint management and deliveries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "392683e3-e590-4e94-a679-7c905fd0285f",
+          "name": "List Webhook Endpoints",
+          "request": {
+            "name": "List Webhook Endpoints",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "endpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4a42d02-1381-474b-855a-5151b2530ec0",
+              "name": "A paginated list of webhook endpoints.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"98cb801c-f9c1-6854-9ee4-1d7a9c3db67c\",\n      \"created_at\": \"1958-09-25T20:59:41.284Z\",\n      \"url\": \"string\",\n      \"format\": \"slack\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"organization_id\": \"07814fcb-7a6d-167d-30a9-e9189d820b1a\"\n    },\n    {\n      \"id\": \"d7ac4044-e73b-62e7-c2d6-c5a915ebfcec\",\n      \"created_at\": \"2004-08-13T02:58:40.252Z\",\n      \"url\": \"string\",\n      \"format\": \"slack\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"organization_id\": \"703ce799-e07b-f7cd-1898-e2cc602653ed\"\n    }\n  ],\n  \"pagination\": {\n    \"total_count\": 4446,\n    \"max_page\": 6271\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68e8124c-2871-4ba6-a578-332e3baaad08",
+          "name": "Create Webhook Endpoint",
+          "request": {
+            "name": "Create Webhook Endpoint",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "endpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"format\": \"raw\",\n  \"secret\": \"<string>\",\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2d5a95a-c409-4aee-b6d2-2bd7c5783e93",
+              "name": "The created webhook endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"format\": \"raw\",\n  \"secret\": \"<string>\",\n  \"events\": [\n    \"order.created\",\n    \"order.created\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b517d5bd-fda5-ee18-aea7-e3eae0219153\",\n  \"created_at\": \"1962-03-06T06:09:59.073Z\",\n  \"url\": \"string\",\n  \"format\": \"raw\",\n  \"events\": [\n    \"string\",\n    \"string\"\n  ],\n  \"organization_id\": \"d1cb3380-16f9-06d8-9a14-74820406b97a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a02282c6-ee20-4bcc-b4fa-0c59fbbe8b04",
+          "name": "Get Webhook Endpoint",
+          "request": {
+            "name": "Get Webhook Endpoint",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "endpoints",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f20aa27-2f2b-44d5-9077-5d7c7c16d79b",
+              "name": "The requested webhook endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "endpoints",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b517d5bd-fda5-ee18-aea7-e3eae0219153\",\n  \"created_at\": \"1962-03-06T06:09:59.073Z\",\n  \"url\": \"string\",\n  \"format\": \"raw\",\n  \"events\": [\n    \"string\",\n    \"string\"\n  ],\n  \"organization_id\": \"d1cb3380-16f9-06d8-9a14-74820406b97a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ad041d6-bcf3-4685-8cfb-aa9b799f3c2e",
+          "name": "Delete Webhook Endpoint",
+          "request": {
+            "name": "Delete Webhook Endpoint",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "endpoints",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce88d3c1-56aa-41fd-8764-298049bf98a2",
+              "name": "The webhook endpoint was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "endpoints",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.polar.sh/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "50b36596-021c-41c1-ad06-fc44ff1d079b",
+    "name": "Polar benefits webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.\n\nContact Support:\n Name: Polar Support\n Email: support@polar.sh",
+      "type": "text/plain"
+    }
+  }
+}

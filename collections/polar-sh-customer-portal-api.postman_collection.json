@@ -1,0 +1,152 @@
+{
+  "item": [
+    {
+      "id": "91309de4-03a3-4559-841b-fef8946928f5",
+      "name": "customer_portal",
+      "description": {
+        "content": "Customer-facing portal endpoints (Customer Session token).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad0394fc-396a-414e-9c61-3a73b0de2747",
+          "name": "Validate License Key (Customer Portal)",
+          "request": {
+            "name": "Validate License Key (Customer Portal)",
+            "description": {
+              "content": "Customer-facing license key validation using a Customer Session token rather than an Organization Access Token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer-portal",
+                "license-keys",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"organization_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "efe616d8-6f96-43b3-860c-943e01c9f8da",
+              "name": "The validation result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer-portal",
+                    "license-keys",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"organization_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f0aaacd3-0232-3953-cf86-99f70483c03e\",\n  \"key\": \"string\",\n  \"status\": \"granted\",\n  \"organization_id\": \"033c5d6f-a240-cbbb-d075-dda1e0304842\",\n  \"customer_id\": \"932007e6-ccf5-0575-7086-1eae0e07747f\",\n  \"benefit_id\": \"4e4c71f9-3f3b-2574-5d43-c805b94133b8\",\n  \"usage\": 3883,\n  \"limit_usage\": 3460,\n  \"expires_at\": \"1977-06-09T16:15:12.541Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.polar.sh/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0a0d419c-2d07-4357-8930-35d55b7a299b",
+    "name": "Polar benefits customer_portal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.\n\nContact Support:\n Name: Polar Support\n Email: support@polar.sh",
+      "type": "text/plain"
+    }
+  }
+}

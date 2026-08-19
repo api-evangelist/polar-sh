@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polar benefits API",
+    "version": "2026-04"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "benefits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update Product Benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/products/:id/benefits",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Product Benefits"
+        },
+        {
+          "info": {
+            "name": "List Benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/benefits/"
+          },
+          "docs": "List Benefits"
+        },
+        {
+          "info": {
+            "name": "Create Benefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/benefits/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Benefit"
+        },
+        {
+          "info": {
+            "name": "Get Benefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/benefits/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Benefit"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

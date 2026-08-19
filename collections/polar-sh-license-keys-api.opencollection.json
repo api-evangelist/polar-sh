@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polar benefits license_keys API",
+    "version": "2026-04"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "license_keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List License Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/license-keys/"
+          },
+          "docs": "List License Keys"
+        },
+        {
+          "info": {
+            "name": "Get License Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.polar.sh/v1/license-keys/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get License Key"
+        },
+        {
+          "info": {
+            "name": "Validate License Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/license-keys/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate License Key"
+        },
+        {
+          "info": {
+            "name": "Activate License Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/license-keys/activate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate License Key"
+        },
+        {
+          "info": {
+            "name": "Validate License Key (Customer Portal)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.polar.sh/v1/customer-portal/license-keys/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Customer-facing license key validation using a Customer Session token rather than an Organization Access Token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
