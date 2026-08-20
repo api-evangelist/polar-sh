@@ -28,6 +28,13 @@ tags:
 - Payments
 - Merchant of Record
 - Monetization
+- Subscription
+- Usage-Based Billing
+tags_raw:
+- Billing
+- Payments
+- Merchant of Record
+- Monetization
 - Subscriptions
 - Usage Based Billing
 created: '2026-06-21'
@@ -40,6 +47,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Benefits
+  tags_raw:
   - benefits
   properties:
   - type: OpenAPI
@@ -86,6 +95,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Checkouts
+  tags_raw:
   - checkouts
   properties:
   - type: OpenAPI
@@ -132,6 +143,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Customer Portal
+  tags_raw:
   - customer_portal
   properties:
   - type: OpenAPI
@@ -178,6 +191,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Customers
+  tags_raw:
   - customers
   properties:
   - type: OpenAPI
@@ -224,6 +239,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Event
+  tags_raw:
   - events
   properties:
   - type: OpenAPI
@@ -270,6 +287,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - License Keys
+  tags_raw:
   - license_keys
   properties:
   - type: OpenAPI
@@ -316,6 +335,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Meters
+  tags_raw:
   - meters
   properties:
   - type: OpenAPI
@@ -362,6 +383,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Order
+  tags_raw:
   - orders
   properties:
   - type: OpenAPI
@@ -408,6 +431,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Product
+  tags_raw:
   - products
   properties:
   - type: OpenAPI
@@ -454,6 +479,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Subscription
+  tags_raw:
   - subscriptions
   properties:
   - type: OpenAPI
@@ -500,6 +527,8 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
+  - Webhook
+  tags_raw:
   - webhooks
   properties:
   - type: OpenAPI
