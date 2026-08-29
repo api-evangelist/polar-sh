@@ -9,6 +9,18 @@ description: Polar is an open-source, developer-first monetization platform that
   checkouts, customers, subscriptions, orders, benefits, license keys, a customer
   portal, usage meters/events, and webhooks behind Bearer organization access tokens.
   Not affiliated with Polar Electro (fitness wearables) or the Polaris design system.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
