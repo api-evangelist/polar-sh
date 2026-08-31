@@ -41,7 +41,7 @@ tags:
 - Merchant of Record
 - Monetization
 - Subscription
-- Usage-Based Billing
+- Usage Based Billing
 tags_raw:
 - Billing
 - Payments
@@ -107,7 +107,7 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
-  - Checkouts
+  - checkouts
   tags_raw:
   - checkouts
   properties:
@@ -154,8 +154,7 @@ apis:
   description: Customer-facing portal endpoints (Customer Session token).
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
-  tags:
-  - Customer Portal
+  tags: []
   tags_raw:
   - customer_portal
   properties:
@@ -298,8 +297,7 @@ apis:
   description: License key issuance, validation, and activation.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
-  tags:
-  - License Keys
+  tags: []
   tags_raw:
   - license_keys
   properties:
@@ -347,7 +345,7 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
-  - Meters
+  - meters
   tags_raw:
   - meters
   properties:
