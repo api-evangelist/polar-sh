@@ -108,7 +108,7 @@ apis:
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
   tags:
-  - Checkouts
+  - Checkout
   tags_raw:
   - checkouts
   properties:
