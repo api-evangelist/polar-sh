@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits customers API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Customers API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: customers
+- name: Customers
   description: Customers, external IDs, and aggregated customer state.
 paths:
   /customers/:
     get:
       operationId: customers:list
       tags:
-      - customers
+      - Customers
       summary: List Customers
       responses:
         '200':
@@ -38,7 +38,7 @@ paths:
     post:
       operationId: customers:create
       tags:
-      - customers
+      - Customers
       summary: Create Customer
       requestBody:
         required: true
@@ -57,7 +57,7 @@ paths:
     get:
       operationId: customers:get
       tags:
-      - customers
+      - Customers
       summary: Get Customer
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -71,7 +71,7 @@ paths:
     delete:
       operationId: customers:delete
       tags:
-      - customers
+      - Customers
       summary: Delete Customer
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -82,7 +82,7 @@ paths:
     get:
       operationId: customers:getState
       tags:
-      - customers
+      - Customers
       summary: Get Customer State
       description: Returns the aggregated state of a customer - active subscriptions, granted benefits, and active meters - in a single response.
       parameters:
@@ -109,11 +109,13 @@ components:
         email:
           type: string
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         external_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         organization_id:
           type: string
           format: uuid
@@ -128,21 +130,16 @@ components:
         email:
           type: string
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         external_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         metadata:
           type: object
           additionalProperties: true
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
     ListResourceCustomer:
       type: object
       properties:
@@ -152,6 +149,13 @@ components:
             $ref: '#/components/schemas/Customer'
         pagination:
           $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
   parameters:
     IdPath:
       name: id

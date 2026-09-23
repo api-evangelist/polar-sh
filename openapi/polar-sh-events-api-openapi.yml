@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits events API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Events API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: events
+- name: Events
   description: Usage event ingestion for metered billing.
 paths:
   /events/:
     get:
       operationId: events:list
       tags:
-      - events
+      - Events
       summary: List Events
       responses:
         '200':
@@ -40,7 +40,7 @@ paths:
     post:
       operationId: events:ingest
       tags:
-      - events
+      - Events
       summary: Ingest Events
       description: Ingest a batch of usage events. Events are later aggregated by meters into billable quantities for usage-based (metered) prices.
       requestBody:
@@ -67,16 +67,19 @@ components:
         name:
           type: string
         external_customer_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         customer_id:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
         timestamp:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         metadata:
           type: object
           additionalProperties: true

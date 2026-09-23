@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Benefits API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: benefits
+- name: Benefits
   description: Benefits (entitlements) attached to products.
 paths:
   /products/{id}/benefits:
     post:
       operationId: products:updateBenefits
       tags:
-      - benefits
+      - Benefits
       summary: Update Product Benefits
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -55,7 +55,7 @@ paths:
     get:
       operationId: benefits:list
       tags:
-      - benefits
+      - Benefits
       summary: List Benefits
       responses:
         '200':
@@ -67,7 +67,7 @@ paths:
     post:
       operationId: benefits:create
       tags:
-      - benefits
+      - Benefits
       summary: Create Benefit
       requestBody:
         required: true
@@ -86,7 +86,7 @@ paths:
     get:
       operationId: benefits:get
       tags:
-      - benefits
+      - Benefits
       summary: Get Benefit
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -99,6 +99,61 @@ paths:
                 $ref: '#/components/schemas/Benefit'
 components:
   schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        modified_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        recurring_interval:
+          type:
+          - string
+          - 'null'
+          enum:
+          - month
+          - year
+          - null
+        is_recurring:
+          type: boolean
+        is_archived:
+          type: boolean
+        organization_id:
+          type: string
+          format: uuid
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductPrice'
+        benefits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Benefit'
+        metadata:
+          type: object
+          additionalProperties: true
+    ListResourceBenefit:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Benefit'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     BenefitCreate:
       type: object
       required:
@@ -119,15 +174,44 @@ components:
         properties:
           type: object
           additionalProperties: true
-    ListResourceBenefit:
+    ProductPrice:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Benefit'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+        id:
+          type: string
+          format: uuid
+        amount_type:
+          type: string
+          enum:
+          - fixed
+          - custom
+          - free
+          - metered_unit
+        price_amount:
+          type:
+          - integer
+          - 'null'
+          description: Amount in the smallest currency unit (e.g. cents).
+        price_currency:
+          type:
+          - string
+          - 'null'
+          example: usd
+        recurring_interval:
+          type:
+          - string
+          - 'null'
+          enum:
+          - month
+          - year
+          - null
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
     Benefit:
       type: object
       properties:
@@ -156,84 +240,6 @@ components:
           type: string
           format: uuid
         properties:
-          type: object
-          additionalProperties: true
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
-    ProductPrice:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        amount_type:
-          type: string
-          enum:
-          - fixed
-          - custom
-          - free
-          - metered_unit
-        price_amount:
-          type: integer
-          nullable: true
-          description: Amount in the smallest currency unit (e.g. cents).
-        price_currency:
-          type: string
-          nullable: true
-          example: usd
-        recurring_interval:
-          type: string
-          nullable: true
-          enum:
-          - month
-          - year
-          - null
-    Product:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        created_at:
-          type: string
-          format: date-time
-        modified_at:
-          type: string
-          format: date-time
-          nullable: true
-        name:
-          type: string
-        description:
-          type: string
-          nullable: true
-        recurring_interval:
-          type: string
-          nullable: true
-          enum:
-          - month
-          - year
-          - null
-        is_recurring:
-          type: boolean
-        is_archived:
-          type: boolean
-        organization_id:
-          type: string
-          format: uuid
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductPrice'
-        benefits:
-          type: array
-          items:
-            $ref: '#/components/schemas/Benefit'
-        metadata:
           type: object
           additionalProperties: true
   parameters:

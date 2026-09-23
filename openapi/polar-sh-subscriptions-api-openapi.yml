@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits subscriptions API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Subscriptions API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: subscriptions
+- name: Subscriptions
   description: Recurring subscriptions.
 paths:
   /subscriptions/:
     get:
       operationId: subscriptions:list
       tags:
-      - subscriptions
+      - Subscriptions
       summary: List Subscriptions
       responses:
         '200':
@@ -39,7 +39,7 @@ paths:
     get:
       operationId: subscriptions:get
       tags:
-      - subscriptions
+      - Subscriptions
       summary: Get Subscription
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -53,7 +53,7 @@ paths:
     patch:
       operationId: subscriptions:update
       tags:
-      - subscriptions
+      - Subscriptions
       summary: Update Subscription
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -74,7 +74,7 @@ paths:
     delete:
       operationId: subscriptions:revoke
       tags:
-      - subscriptions
+      - Subscriptions
       summary: Revoke Subscription
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -87,13 +87,6 @@ paths:
                 $ref: '#/components/schemas/Subscription'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
     ListResourceSubscription:
       type: object
       properties:
@@ -125,9 +118,10 @@ components:
           type: string
           format: date-time
         current_period_end:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         cancel_at_period_end:
           type: boolean
         product_id:
@@ -142,11 +136,20 @@ components:
           - month
           - year
         amount:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         currency:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
   parameters:
     IdPath:
       name: id

@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits meters API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Meters API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: meters
+- name: Meters
   description: Usage meters aggregating ingested events.
 paths:
   /meters/:
     get:
       operationId: meters:list
       tags:
-      - meters
+      - Meters
       summary: List Meters
       responses:
         '200':
@@ -38,7 +38,7 @@ paths:
     post:
       operationId: meters:create
       tags:
-      - meters
+      - Meters
       summary: Create Meter
       requestBody:
         required: true
@@ -57,7 +57,7 @@ paths:
     get:
       operationId: meters:get
       tags:
-      - meters
+      - Meters
       summary: Get Meter
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -70,6 +70,21 @@ paths:
                 $ref: '#/components/schemas/Meter'
 components:
   schemas:
+    MeterCreate:
+      type: object
+      required:
+      - name
+      - filter
+      - aggregation
+      properties:
+        name:
+          type: string
+        filter:
+          type: object
+          additionalProperties: true
+        aggregation:
+          type: object
+          additionalProperties: true
     ListResourceMeter:
       type: object
       properties:
@@ -79,6 +94,13 @@ components:
             $ref: '#/components/schemas/Meter'
         pagination:
           $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
     Meter:
       type: object
       properties:
@@ -101,28 +123,6 @@ components:
         organization_id:
           type: string
           format: uuid
-    MeterCreate:
-      type: object
-      required:
-      - name
-      - filter
-      - aggregation
-      properties:
-        name:
-          type: string
-        filter:
-          type: object
-          additionalProperties: true
-        aggregation:
-          type: object
-          additionalProperties: true
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
   parameters:
     IdPath:
       name: id

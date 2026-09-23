@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits customer_portal API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Customer Portal API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: customer_portal
+- name: Customer Portal
   description: Customer-facing portal endpoints (Customer Session token).
 paths:
   /customer-portal/license-keys/validate:
     post:
       operationId: customerPortal:validateLicenseKey
       tags:
-      - customer_portal
+      - Customer Portal
       summary: Validate License Key (Customer Portal)
       description: Customer-facing license key validation using a Customer Session token rather than an Organization Access Token.
       security:
@@ -81,12 +81,14 @@ components:
         usage:
           type: integer
         limit_usage:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         expires_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
   securitySchemes:
     oat:
       type: http

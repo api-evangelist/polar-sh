@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits orders API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Orders API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: orders
+- name: Orders
   description: Orders, invoices, and receipts.
 paths:
   /orders/:
     get:
       operationId: orders:list
       tags:
-      - orders
+      - Orders
       summary: List Orders
       responses:
         '200':
@@ -39,7 +39,7 @@ paths:
     get:
       operationId: orders:get
       tags:
-      - orders
+      - Orders
       summary: Get Order
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -54,7 +54,7 @@ paths:
     get:
       operationId: orders:getInvoice
       tags:
-      - orders
+      - Orders
       summary: Get Order Invoice
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -70,13 +70,6 @@ paths:
                     type: string
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
     ListResourceOrder:
       type: object
       properties:
@@ -122,9 +115,17 @@ components:
           type: string
           format: uuid
         subscription_id:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
   parameters:
     IdPath:
       name: id

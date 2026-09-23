@@ -1,17 +1,7 @@
 {
   "provider": "polar-sh",
   "sources": [
-    "polar-sh-benefits-api-openapi.yml",
-    "polar-sh-checkouts-api-openapi.yml",
-    "polar-sh-customer-portal-api-openapi.yml",
-    "polar-sh-customers-api-openapi.yml",
-    "polar-sh-events-api-openapi.yml",
-    "polar-sh-license-keys-api-openapi.yml",
-    "polar-sh-meters-api-openapi.yml",
-    "polar-sh-orders-api-openapi.yml",
-    "polar-sh-products-api-openapi.yml",
-    "polar-sh-subscriptions-api-openapi.yml",
-    "polar-sh-webhooks-api-openapi.yml"
+    "_original/polar-sh-openapi.yml"
   ],
   "outputs": [
     "polar-sh-benefits-api-openapi.yml",
@@ -29,6 +19,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "polar-sh-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "polar-sh-benefits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-checkouts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-customer-portal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-license-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-meters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "polar-sh-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

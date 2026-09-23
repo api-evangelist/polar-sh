@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits license_keys API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar License Keys API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: license_keys
+- name: License Keys
   description: License key issuance, validation, and activation.
 paths:
   /license-keys/:
     get:
       operationId: licenseKeys:list
       tags:
-      - license_keys
+      - License Keys
       summary: List License Keys
       responses:
         '200':
@@ -39,7 +39,7 @@ paths:
     get:
       operationId: licenseKeys:get
       tags:
-      - license_keys
+      - License Keys
       summary: Get License Key
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -54,7 +54,7 @@ paths:
     post:
       operationId: licenseKeys:validate
       tags:
-      - license_keys
+      - License Keys
       summary: Validate License Key
       requestBody:
         required: true
@@ -85,7 +85,7 @@ paths:
     post:
       operationId: licenseKeys:activate
       tags:
-      - license_keys
+      - License Keys
       summary: Activate License Key
       requestBody:
         required: true
@@ -117,7 +117,7 @@ paths:
     post:
       operationId: customerPortal:validateLicenseKey
       tags:
-      - license_keys
+      - License Keys
       summary: Validate License Key (Customer Portal)
       description: Customer-facing license key validation using a Customer Session token rather than an Organization Access Token.
       security:
@@ -146,22 +146,6 @@ paths:
                 $ref: '#/components/schemas/LicenseKey'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
-    ListResourceLicenseKey:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LicenseKey'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     LicenseKey:
       type: object
       properties:
@@ -188,12 +172,30 @@ components:
         usage:
           type: integer
         limit_usage:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         expires_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
+    ListResourceLicenseKey:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseKey'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
   parameters:
     IdPath:
       name: id

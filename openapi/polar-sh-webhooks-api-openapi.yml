@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits webhooks API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Webhooks API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: webhooks
+- name: Webhooks
   description: Webhook endpoint management and deliveries.
 paths:
   /webhooks/endpoints:
     get:
       operationId: webhooks:listEndpoints
       tags:
-      - webhooks
+      - Webhooks
       summary: List Webhook Endpoints
       responses:
         '200':
@@ -38,7 +38,7 @@ paths:
     post:
       operationId: webhooks:createEndpoint
       tags:
-      - webhooks
+      - Webhooks
       summary: Create Webhook Endpoint
       requestBody:
         required: true
@@ -57,7 +57,7 @@ paths:
     get:
       operationId: webhooks:getEndpoint
       tags:
-      - webhooks
+      - Webhooks
       summary: Get Webhook Endpoint
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -71,7 +71,7 @@ paths:
     delete:
       operationId: webhooks:deleteEndpoint
       tags:
-      - webhooks
+      - Webhooks
       summary: Delete Webhook Endpoint
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -95,8 +95,9 @@ components:
           - slack
           default: raw
         secret:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         events:
           type: array
           items:

@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits checkouts API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Checkouts API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: checkouts
+- name: Checkouts
   description: Hosted checkout sessions and reusable checkout links.
 paths:
   /checkouts/:
     get:
       operationId: checkouts:list
       tags:
-      - checkouts
+      - Checkouts
       summary: List Checkout Sessions
       responses:
         '200':
@@ -38,7 +38,7 @@ paths:
     post:
       operationId: checkouts:create
       tags:
-      - checkouts
+      - Checkouts
       summary: Create Checkout Session
       requestBody:
         required: true
@@ -57,7 +57,7 @@ paths:
     get:
       operationId: checkouts:get
       tags:
-      - checkouts
+      - Checkouts
       summary: Get Checkout Session
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -72,7 +72,7 @@ paths:
     get:
       operationId: checkoutLinks:list
       tags:
-      - checkouts
+      - Checkouts
       summary: List Checkout Links
       responses:
         '200':
@@ -84,7 +84,7 @@ paths:
     post:
       operationId: checkoutLinks:create
       tags:
-      - checkouts
+      - Checkouts
       summary: Create Checkout Link
       requestBody:
         required: true
@@ -101,8 +101,9 @@ paths:
                     type: string
                     format: uuid
                 success_url:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
       responses:
         '201':
           description: The created checkout link.
@@ -125,28 +126,25 @@ components:
             type: string
             format: uuid
         customer_email:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         customer_external_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         success_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         discount_id:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
         metadata:
           type: object
           additionalProperties: true
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
     Checkout:
       type: object
       properties:
@@ -169,21 +167,26 @@ components:
           type: string
           format: date-time
         product_id:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
         amount:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         currency:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         customer_email:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         success_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
     ListResourceCheckout:
       type: object
       properties:
@@ -193,6 +196,13 @@ components:
             $ref: '#/components/schemas/Checkout'
         pagination:
           $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
   parameters:
     IdPath:
       name: id

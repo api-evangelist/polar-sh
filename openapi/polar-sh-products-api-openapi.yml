@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Polar benefits products API
-  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers. This document models the core organization-facing REST surface of the Polar API - products and prices, checkouts, customers, subscriptions, orders, benefits and license keys, usage meters and events, and webhooks. All requests are authenticated with a Bearer Organization Access Token. The canonical, machine-generated specification is published by Polar at https://api.polar.sh/openapi.json; this is a curated subset for the API Evangelist catalog.
+  title: Polar Products API
+  description: Polar is an open-source Merchant of Record (MoR) and monetization platform for developers.
   termsOfService: https://polar.sh/legal/terms
   contact:
     name: Polar Support
@@ -19,14 +19,14 @@ servers:
 security:
 - oat: []
 tags:
-- name: products
+- name: Products
   description: Product catalog and embedded pricing.
 paths:
   /products/:
     get:
       operationId: products:list
       tags:
-      - products
+      - Products
       summary: List Products
       parameters:
       - name: organization_id
@@ -62,7 +62,7 @@ paths:
     post:
       operationId: products:create
       tags:
-      - products
+      - Products
       summary: Create Product
       requestBody:
         required: true
@@ -81,7 +81,7 @@ paths:
     get:
       operationId: products:get
       tags:
-      - products
+      - Products
       summary: Get Product
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -95,7 +95,7 @@ paths:
     patch:
       operationId: products:update
       tags:
-      - products
+      - Products
       summary: Update Product
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -116,7 +116,7 @@ paths:
     post:
       operationId: products:updateBenefits
       tags:
-      - products
+      - Products
       summary: Update Product Benefits
       parameters:
       - $ref: '#/components/parameters/IdPath'
@@ -143,15 +143,6 @@ paths:
                 $ref: '#/components/schemas/Product'
 components:
   schemas:
-    ListResourceProduct:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     ProductPriceCreate:
       type: object
       required:
@@ -165,18 +156,50 @@ components:
           - free
           - metered_unit
         price_amount:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         price_currency:
           type: string
           default: usd
         meter_id:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
         unit_amount:
+          type:
+          - string
+          - 'null'
+    ProductCreate:
+      type: object
+      required:
+      - name
+      - prices
+      properties:
+        name:
           type: string
-          nullable: true
+        description:
+          type:
+          - string
+          - 'null'
+        recurring_interval:
+          type:
+          - string
+          - 'null'
+          enum:
+          - month
+          - year
+          - null
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductPriceCreate'
+        organization_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
     Product:
       type: object
       properties:
@@ -187,17 +210,20 @@ components:
           type: string
           format: date-time
         modified_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         name:
           type: string
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         recurring_interval:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           enum:
           - month
           - year
@@ -220,49 +246,15 @@ components:
         metadata:
           type: object
           additionalProperties: true
-    ProductUpdate:
+    ListResourceProduct:
       type: object
       properties:
-        name:
-          type: string
-        description:
-          type: string
-          nullable: true
-        is_archived:
-          type: boolean
-    ProductCreate:
-      type: object
-      required:
-      - name
-      - prices
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-          nullable: true
-        recurring_interval:
-          type: string
-          nullable: true
-          enum:
-          - month
-          - year
-          - null
-        prices:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/ProductPriceCreate'
-        organization_id:
-          type: string
-          format: uuid
-          nullable: true
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     ProductPrice:
       type: object
       properties:
@@ -277,20 +269,41 @@ components:
           - free
           - metered_unit
         price_amount:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
           description: Amount in the smallest currency unit (e.g. cents).
         price_currency:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           example: usd
         recurring_interval:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           enum:
           - month
           - year
           - null
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+    ProductUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        is_archived:
+          type: boolean
     Benefit:
       type: object
       properties:
