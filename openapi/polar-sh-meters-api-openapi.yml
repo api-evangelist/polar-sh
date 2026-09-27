@@ -70,6 +70,22 @@ paths:
                 $ref: '#/components/schemas/Meter'
 components:
   schemas:
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+    ListResourceMeter:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Meter'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     MeterCreate:
       type: object
       required:
@@ -85,22 +101,6 @@ components:
         aggregation:
           type: object
           additionalProperties: true
-    ListResourceMeter:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Meter'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
     Meter:
       type: object
       properties:

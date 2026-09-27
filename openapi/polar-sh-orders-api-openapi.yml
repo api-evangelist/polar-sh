@@ -69,7 +69,22 @@ paths:
                   url:
                     type: string
 components:
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
     ListResourceOrder:
       type: object
       properties:
@@ -119,21 +134,6 @@ components:
           - string
           - 'null'
           format: uuid
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     oat:
       type: http

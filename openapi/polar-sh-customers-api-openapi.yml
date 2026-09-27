@@ -97,6 +97,15 @@ paths:
                 additionalProperties: true
 components:
   schemas:
+    ListResourceCustomer:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Customer:
       type: object
       properties:
@@ -122,6 +131,13 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
     CustomerCreate:
       type: object
       required:
@@ -140,22 +156,6 @@ components:
         metadata:
           type: object
           additionalProperties: true
-    ListResourceCustomer:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
   parameters:
     IdPath:
       name: id

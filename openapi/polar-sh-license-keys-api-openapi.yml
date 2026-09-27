@@ -146,6 +146,15 @@ paths:
                 $ref: '#/components/schemas/LicenseKey'
 components:
   schemas:
+    ListResourceLicenseKey:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseKey'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     LicenseKey:
       type: object
       properties:
@@ -180,15 +189,6 @@ components:
           - string
           - 'null'
           format: date-time
-    ListResourceLicenseKey:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LicenseKey'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     Pagination:
       type: object
       properties:

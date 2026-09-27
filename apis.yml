@@ -55,7 +55,7 @@ modified: '2026-06-21'
 specificationVersion: '0.23'
 apis:
 - aid: polar-sh:polar-sh-benefits-api
-  name: Polar benefits API
+  name: Polar Benefits API
   description: Benefits (entitlements) attached to products.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -103,7 +103,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-checkouts-api
-  name: Polar checkouts API
+  name: Polar Checkouts API
   description: Hosted checkout sessions and reusable checkout links.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -151,7 +151,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-customer-portal-api
-  name: Polar customer_portal API
+  name: Polar Customer Portal API
   description: Customer-facing portal endpoints (Customer Session token).
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -199,7 +199,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-customers-api
-  name: Polar customers API
+  name: Polar Customers API
   description: Customers, external IDs, and aggregated customer state.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -247,7 +247,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-events-api
-  name: Polar events API
+  name: Polar Events API
   description: Usage event ingestion for metered billing.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -295,7 +295,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-license-keys-api
-  name: Polar license_keys API
+  name: Polar License Keys API
   description: License key issuance, validation, and activation.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -343,7 +343,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-meters-api
-  name: Polar meters API
+  name: Polar Meters API
   description: Usage meters aggregating ingested events.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -391,7 +391,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-orders-api
-  name: Polar orders API
+  name: Polar Orders API
   description: Orders, invoices, and receipts.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -439,7 +439,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-products-api
-  name: Polar products API
+  name: Polar Products API
   description: Product catalog and embedded pricing.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -487,7 +487,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-subscriptions-api
-  name: Polar subscriptions API
+  name: Polar Subscriptions API
   description: Recurring subscriptions.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
@@ -535,7 +535,7 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 - aid: polar-sh:polar-sh-webhooks-api
-  name: Polar webhooks API
+  name: Polar Webhooks API
   description: Webhook endpoint management and deliveries.
   humanURL: https://polar.sh/docs/api-reference/products
   baseURL: https://api.polar.sh/v1
