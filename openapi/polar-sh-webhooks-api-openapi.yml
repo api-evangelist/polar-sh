@@ -80,6 +80,15 @@ paths:
           description: The webhook endpoint was deleted.
 components:
   schemas:
+    ListResourceWebhookEndpoint:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEndpoint'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Pagination:
       type: object
       properties:
@@ -134,15 +143,6 @@ components:
         organization_id:
           type: string
           format: uuid
-    ListResourceWebhookEndpoint:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookEndpoint'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
   parameters:
     IdPath:
       name: id

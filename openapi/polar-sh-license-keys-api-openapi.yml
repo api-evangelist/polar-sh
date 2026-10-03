@@ -145,6 +145,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/LicenseKey'
 components:
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
     ListResourceLicenseKey:
       type: object
@@ -155,6 +163,13 @@ components:
             $ref: '#/components/schemas/LicenseKey'
         pagination:
           $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
     LicenseKey:
       type: object
       properties:
@@ -189,21 +204,6 @@ components:
           - string
           - 'null'
           format: date-time
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     oat:
       type: http

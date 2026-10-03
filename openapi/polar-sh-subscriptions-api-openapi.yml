@@ -94,6 +94,15 @@ components:
           type: integer
         max_page:
           type: integer
+    ListResourceSubscription:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Subscription:
       type: object
       properties:
@@ -141,15 +150,6 @@ components:
           type:
           - string
           - 'null'
-    ListResourceSubscription:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Subscription'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
   parameters:
     IdPath:
       name: id

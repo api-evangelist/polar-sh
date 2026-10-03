@@ -143,6 +143,140 @@ paths:
                 $ref: '#/components/schemas/Product'
 components:
   schemas:
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
+    ListResourceProduct:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Benefit:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        type:
+          type: string
+          enum:
+          - custom
+          - discord
+          - github_repository
+          - downloadables
+          - license_keys
+          - meter_credit
+        description:
+          type: string
+        selectable:
+          type: boolean
+        deletable:
+          type: boolean
+        organization_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+    ProductUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        is_archived:
+          type: boolean
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        modified_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        recurring_interval:
+          type:
+          - string
+          - 'null'
+          enum:
+          - month
+          - year
+          - null
+        is_recurring:
+          type: boolean
+        is_archived:
+          type: boolean
+        organization_id:
+          type: string
+          format: uuid
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductPrice'
+        benefits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Benefit'
+        metadata:
+          type: object
+          additionalProperties: true
+    ProductPrice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount_type:
+          type: string
+          enum:
+          - fixed
+          - custom
+          - free
+          - metered_unit
+        price_amount:
+          type:
+          - integer
+          - 'null'
+          description: Amount in the smallest currency unit (e.g. cents).
+        price_currency:
+          type:
+          - string
+          - 'null'
+          example: usd
+        recurring_interval:
+          type:
+          - string
+          - 'null'
+          enum:
+          - month
+          - year
+          - null
     ProductPriceCreate:
       type: object
       required:
@@ -200,140 +334,6 @@ components:
           - string
           - 'null'
           format: uuid
-    Benefit:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        created_at:
-          type: string
-          format: date-time
-        type:
-          type: string
-          enum:
-          - custom
-          - discord
-          - github_repository
-          - downloadables
-          - license_keys
-          - meter_credit
-        description:
-          type: string
-        selectable:
-          type: boolean
-        deletable:
-          type: boolean
-        organization_id:
-          type: string
-          format: uuid
-        properties:
-          type: object
-          additionalProperties: true
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
-    ProductPrice:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        amount_type:
-          type: string
-          enum:
-          - fixed
-          - custom
-          - free
-          - metered_unit
-        price_amount:
-          type:
-          - integer
-          - 'null'
-          description: Amount in the smallest currency unit (e.g. cents).
-        price_currency:
-          type:
-          - string
-          - 'null'
-          example: usd
-        recurring_interval:
-          type:
-          - string
-          - 'null'
-          enum:
-          - month
-          - year
-          - null
-    Product:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        created_at:
-          type: string
-          format: date-time
-        modified_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        name:
-          type: string
-        description:
-          type:
-          - string
-          - 'null'
-        recurring_interval:
-          type:
-          - string
-          - 'null'
-          enum:
-          - month
-          - year
-          - null
-        is_recurring:
-          type: boolean
-        is_archived:
-          type: boolean
-        organization_id:
-          type: string
-          format: uuid
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductPrice'
-        benefits:
-          type: array
-          items:
-            $ref: '#/components/schemas/Benefit'
-        metadata:
-          type: object
-          additionalProperties: true
-    ProductUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type:
-          - string
-          - 'null'
-        is_archived:
-          type: boolean
-    ListResourceProduct:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
   parameters:
     IdPath:
       name: id

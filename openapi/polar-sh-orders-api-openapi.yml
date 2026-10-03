@@ -69,14 +69,6 @@ paths:
                   url:
                     type: string
 components:
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
     Pagination:
       type: object
@@ -134,6 +126,14 @@ components:
           - string
           - 'null'
           format: uuid
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     oat:
       type: http

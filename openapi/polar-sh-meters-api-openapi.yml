@@ -77,15 +77,6 @@ components:
           type: integer
         max_page:
           type: integer
-    ListResourceMeter:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Meter'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     MeterCreate:
       type: object
       required:
@@ -123,6 +114,15 @@ components:
         organization_id:
           type: string
           format: uuid
+    ListResourceMeter:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Meter'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
   parameters:
     IdPath:
       name: id
