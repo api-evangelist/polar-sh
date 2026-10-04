@@ -113,7 +113,46 @@ paths:
                 type: object
                 additionalProperties: true
 components:
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
+    CheckoutCreate:
+      type: object
+      required:
+      - products
+      properties:
+        products:
+          type: array
+          description: One or more product IDs offered in the checkout.
+          items:
+            type: string
+            format: uuid
+        customer_email:
+          type:
+          - string
+          - 'null'
+        customer_external_id:
+          type:
+          - string
+          - 'null'
+        success_url:
+          type:
+          - string
+          - 'null'
+        discount_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        metadata:
+          type: object
+          additionalProperties: true
     Pagination:
       type: object
       properties:
@@ -172,45 +211,6 @@ components:
             $ref: '#/components/schemas/Checkout'
         pagination:
           $ref: '#/components/schemas/Pagination'
-    CheckoutCreate:
-      type: object
-      required:
-      - products
-      properties:
-        products:
-          type: array
-          description: One or more product IDs offered in the checkout.
-          items:
-            type: string
-            format: uuid
-        customer_email:
-          type:
-          - string
-          - 'null'
-        customer_external_id:
-          type:
-          - string
-          - 'null'
-        success_url:
-          type:
-          - string
-          - 'null'
-        discount_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        metadata:
-          type: object
-          additionalProperties: true
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     oat:
       type: http

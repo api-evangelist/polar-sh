@@ -79,7 +79,39 @@ paths:
         '204':
           description: The webhook endpoint was deleted.
 components:
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
+    WebhookEndpoint:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        url:
+          type: string
+        format:
+          type: string
+          enum:
+          - raw
+          - discord
+          - slack
+        events:
+          type: array
+          items:
+            type: string
+        organization_id:
+          type: string
+          format: uuid
     ListResourceWebhookEndpoint:
       type: object
       properties:
@@ -119,38 +151,6 @@ components:
           items:
             type: string
             example: order.created
-    WebhookEndpoint:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        created_at:
-          type: string
-          format: date-time
-        url:
-          type: string
-        format:
-          type: string
-          enum:
-          - raw
-          - discord
-          - slack
-        events:
-          type: array
-          items:
-            type: string
-        organization_id:
-          type: string
-          format: uuid
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     oat:
       type: http

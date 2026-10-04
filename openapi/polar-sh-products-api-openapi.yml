@@ -143,6 +143,94 @@ paths:
                 $ref: '#/components/schemas/Product'
 components:
   schemas:
+    ProductPrice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount_type:
+          type: string
+          enum:
+          - fixed
+          - custom
+          - free
+          - metered_unit
+        price_amount:
+          type:
+          - integer
+          - 'null'
+          description: Amount in the smallest currency unit (e.g. cents).
+        price_currency:
+          type:
+          - string
+          - 'null'
+          example: usd
+        recurring_interval:
+          type:
+          - string
+          - 'null'
+          enum:
+          - month
+          - year
+          - null
+    ProductCreate:
+      type: object
+      required:
+      - name
+      - prices
+      properties:
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        recurring_interval:
+          type:
+          - string
+          - 'null'
+          enum:
+          - month
+          - year
+          - null
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductPriceCreate'
+        organization_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+    ProductPriceCreate:
+      type: object
+      required:
+      - amount_type
+      properties:
+        amount_type:
+          type: string
+          enum:
+          - fixed
+          - custom
+          - free
+          - metered_unit
+        price_amount:
+          type:
+          - integer
+          - 'null'
+        price_currency:
+          type: string
+          default: usd
+        meter_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        unit_amount:
+          type:
+          - string
+          - 'null'
     Pagination:
       type: object
       properties:
@@ -150,15 +238,6 @@ components:
           type: integer
         max_page:
           type: integer
-    ListResourceProduct:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     Benefit:
       type: object
       properties:
@@ -246,94 +325,15 @@ components:
         metadata:
           type: object
           additionalProperties: true
-    ProductPrice:
+    ListResourceProduct:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        amount_type:
-          type: string
-          enum:
-          - fixed
-          - custom
-          - free
-          - metered_unit
-        price_amount:
-          type:
-          - integer
-          - 'null'
-          description: Amount in the smallest currency unit (e.g. cents).
-        price_currency:
-          type:
-          - string
-          - 'null'
-          example: usd
-        recurring_interval:
-          type:
-          - string
-          - 'null'
-          enum:
-          - month
-          - year
-          - null
-    ProductPriceCreate:
-      type: object
-      required:
-      - amount_type
-      properties:
-        amount_type:
-          type: string
-          enum:
-          - fixed
-          - custom
-          - free
-          - metered_unit
-        price_amount:
-          type:
-          - integer
-          - 'null'
-        price_currency:
-          type: string
-          default: usd
-        meter_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        unit_amount:
-          type:
-          - string
-          - 'null'
-    ProductCreate:
-      type: object
-      required:
-      - name
-      - prices
-      properties:
-        name:
-          type: string
-        description:
-          type:
-          - string
-          - 'null'
-        recurring_interval:
-          type:
-          - string
-          - 'null'
-          enum:
-          - month
-          - year
-          - null
-        prices:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/ProductPriceCreate'
-        organization_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
   parameters:
     IdPath:
       name: id

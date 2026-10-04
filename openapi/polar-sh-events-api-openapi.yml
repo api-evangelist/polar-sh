@@ -61,6 +61,15 @@ paths:
                     type: integer
 components:
   schemas:
+    EventsIngest:
+      type: object
+      required:
+      - events
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
     Event:
       type: object
       properties:
@@ -83,15 +92,6 @@ components:
         metadata:
           type: object
           additionalProperties: true
-    EventsIngest:
-      type: object
-      required:
-      - events
-      properties:
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
   securitySchemes:
     oat:
       type: http

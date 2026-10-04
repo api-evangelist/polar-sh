@@ -87,13 +87,6 @@ paths:
                 $ref: '#/components/schemas/Subscription'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
     ListResourceSubscription:
       type: object
       properties:
@@ -150,6 +143,13 @@ components:
           type:
           - string
           - 'null'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
   parameters:
     IdPath:
       name: id
