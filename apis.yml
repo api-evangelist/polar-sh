@@ -583,6 +583,9 @@ apis:
   - type: APIReference
     url: https://polar.sh/docs/api-reference/webhooks/create
 common:
+- type: CapabilityMap
+  url: capabilities/polar-sh-capability-edges.yml
+  name: Polar Business Capability Map
 - type: AgenticAccess
   url: agentic-access/polar-sh-agentic-access.yml
 - type: DomainSecurity
