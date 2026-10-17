@@ -113,14 +113,6 @@ paths:
                 type: object
                 additionalProperties: true
 components:
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
     CheckoutCreate:
       type: object
@@ -160,6 +152,15 @@ components:
           type: integer
         max_page:
           type: integer
+    ListResourceCheckout:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Checkout'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Checkout:
       type: object
       properties:
@@ -202,15 +203,14 @@ components:
           type:
           - string
           - 'null'
-    ListResourceCheckout:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Checkout'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     oat:
       type: http

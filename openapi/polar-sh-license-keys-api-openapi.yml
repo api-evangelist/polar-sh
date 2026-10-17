@@ -163,6 +163,13 @@ components:
             $ref: '#/components/schemas/LicenseKey'
         pagination:
           $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
     LicenseKey:
       type: object
       properties:
@@ -197,13 +204,6 @@ components:
           - string
           - 'null'
           format: date-time
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
   securitySchemes:
     oat:
       type: http

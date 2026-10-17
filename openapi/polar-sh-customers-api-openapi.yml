@@ -96,14 +96,6 @@ paths:
                 type: object
                 additionalProperties: true
 components:
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
     Pagination:
       type: object
@@ -112,15 +104,6 @@ components:
           type: integer
         max_page:
           type: integer
-    ListResourceCustomer:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     Customer:
       type: object
       properties:
@@ -164,6 +147,23 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    ListResourceCustomer:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     oat:
       type: http

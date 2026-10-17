@@ -70,6 +70,22 @@ paths:
                     type: string
 components:
   schemas:
+    ListResourceOrder:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
     Order:
       type: object
       properties:
@@ -110,22 +126,6 @@ components:
           - string
           - 'null'
           format: uuid
-    ListResourceOrder:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
   parameters:
     IdPath:
       name: id

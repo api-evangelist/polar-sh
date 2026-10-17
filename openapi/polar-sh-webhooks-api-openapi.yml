@@ -79,15 +79,30 @@ paths:
         '204':
           description: The webhook endpoint was deleted.
 components:
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
+    WebhookEndpointCreate:
+      type: object
+      required:
+      - url
+      properties:
+        url:
+          type: string
+        format:
+          type: string
+          enum:
+          - raw
+          - discord
+          - slack
+          default: raw
+        secret:
+          type:
+          - string
+          - 'null'
+        events:
+          type: array
+          items:
+            type: string
+            example: order.created
     WebhookEndpoint:
       type: object
       properties:
@@ -112,6 +127,13 @@ components:
         organization_id:
           type: string
           format: uuid
+    Pagination:
+      type: object
+      properties:
+        total_count:
+          type: integer
+        max_page:
+          type: integer
     ListResourceWebhookEndpoint:
       type: object
       properties:
@@ -121,36 +143,14 @@ components:
             $ref: '#/components/schemas/WebhookEndpoint'
         pagination:
           $ref: '#/components/schemas/Pagination'
-    Pagination:
-      type: object
-      properties:
-        total_count:
-          type: integer
-        max_page:
-          type: integer
-    WebhookEndpointCreate:
-      type: object
-      required:
-      - url
-      properties:
-        url:
-          type: string
-        format:
-          type: string
-          enum:
-          - raw
-          - discord
-          - slack
-          default: raw
-        secret:
-          type:
-          - string
-          - 'null'
-        events:
-          type: array
-          items:
-            type: string
-            example: order.created
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     oat:
       type: http

@@ -99,57 +99,6 @@ paths:
                 $ref: '#/components/schemas/Benefit'
 components:
   schemas:
-    ProductPrice:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        amount_type:
-          type: string
-          enum:
-          - fixed
-          - custom
-          - free
-          - metered_unit
-        price_amount:
-          type:
-          - integer
-          - 'null'
-          description: Amount in the smallest currency unit (e.g. cents).
-        price_currency:
-          type:
-          - string
-          - 'null'
-          example: usd
-        recurring_interval:
-          type:
-          - string
-          - 'null'
-          enum:
-          - month
-          - year
-          - null
-    BenefitCreate:
-      type: object
-      required:
-      - type
-      - description
-      properties:
-        type:
-          type: string
-          enum:
-          - custom
-          - discord
-          - github_repository
-          - downloadables
-          - license_keys
-          - meter_credit
-        description:
-          type: string
-        properties:
-          type: object
-          additionalProperties: true
     Pagination:
       type: object
       properties:
@@ -157,36 +106,15 @@ components:
           type: integer
         max_page:
           type: integer
-    Benefit:
+    ListResourceBenefit:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        created_at:
-          type: string
-          format: date-time
-        type:
-          type: string
-          enum:
-          - custom
-          - discord
-          - github_repository
-          - downloadables
-          - license_keys
-          - meter_credit
-        description:
-          type: string
-        selectable:
-          type: boolean
-        deletable:
-          type: boolean
-        organization_id:
-          type: string
-          format: uuid
-        properties:
-          type: object
-          additionalProperties: true
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Benefit'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Product:
       type: object
       properties:
@@ -233,15 +161,87 @@ components:
         metadata:
           type: object
           additionalProperties: true
-    ListResourceBenefit:
+    ProductPrice:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Benefit'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+        id:
+          type: string
+          format: uuid
+        amount_type:
+          type: string
+          enum:
+          - fixed
+          - custom
+          - free
+          - metered_unit
+        price_amount:
+          type:
+          - integer
+          - 'null'
+          description: Amount in the smallest currency unit (e.g. cents).
+        price_currency:
+          type:
+          - string
+          - 'null'
+          example: usd
+        recurring_interval:
+          type:
+          - string
+          - 'null'
+          enum:
+          - month
+          - year
+          - null
+    Benefit:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        type:
+          type: string
+          enum:
+          - custom
+          - discord
+          - github_repository
+          - downloadables
+          - license_keys
+          - meter_credit
+        description:
+          type: string
+        selectable:
+          type: boolean
+        deletable:
+          type: boolean
+        organization_id:
+          type: string
+          format: uuid
+        properties:
+          type: object
+          additionalProperties: true
+    BenefitCreate:
+      type: object
+      required:
+      - type
+      - description
+      properties:
+        type:
+          type: string
+          enum:
+          - custom
+          - discord
+          - github_repository
+          - downloadables
+          - license_keys
+          - meter_credit
+        description:
+          type: string
+        properties:
+          type: object
+          additionalProperties: true
   parameters:
     IdPath:
       name: id

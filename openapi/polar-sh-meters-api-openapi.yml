@@ -69,24 +69,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Meter'
 components:
-  parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
-    ListResourceMeter:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Meter'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     Pagination:
       type: object
       properties:
@@ -94,6 +77,21 @@ components:
           type: integer
         max_page:
           type: integer
+    MeterCreate:
+      type: object
+      required:
+      - name
+      - filter
+      - aggregation
+      properties:
+        name:
+          type: string
+        filter:
+          type: object
+          additionalProperties: true
+        aggregation:
+          type: object
+          additionalProperties: true
     Meter:
       type: object
       properties:
@@ -116,21 +114,23 @@ components:
         organization_id:
           type: string
           format: uuid
-    MeterCreate:
+    ListResourceMeter:
       type: object
-      required:
-      - name
-      - filter
-      - aggregation
       properties:
-        name:
-          type: string
-        filter:
-          type: object
-          additionalProperties: true
-        aggregation:
-          type: object
-          additionalProperties: true
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Meter'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+  parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     oat:
       type: http
